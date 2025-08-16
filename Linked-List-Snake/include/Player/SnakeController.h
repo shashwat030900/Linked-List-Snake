@@ -1,4 +1,5 @@
 #pragma once
+<<<<<<< Updated upstream
 
 namespace Player
 {
@@ -13,3 +14,5 @@ namespace Player
         void render();
     };
 }
+=======
+>>>>>>> Stashed changes

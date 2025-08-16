@@ -1,4 +1,6 @@
 #pragma once
+#include "Player/PlayerService.h"
+
 #include "Player/SnakeController.h"
 
 namespace Player
@@ -21,3 +23,4 @@ namespace Player
         void spawnPlayer();
     };
 }
+
