@@ -10,6 +10,8 @@ namespace Level
         LevelController* level_controller;
         LevelNumber current_level;
 
+        void spawnPlayer();
+
     public:
         LevelService();
         ~LevelService();
