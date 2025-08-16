@@ -4,16 +4,11 @@
 
 namespace Level
 {
-    class LevelController;
-
     class LevelService
     {
     private:
         LevelController* level_controller;
         LevelNumber current_level;
-
-        void createLevelController();
-        void destroy();
 
     public:
         LevelService();
