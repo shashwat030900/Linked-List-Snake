@@ -1,9 +1,8 @@
 #pragma once
-#include <vector>
-#include "LevelModel.h"
 
 namespace Level
 {
+    class LevelModel;
     class LevelView;
 
     class LevelController
