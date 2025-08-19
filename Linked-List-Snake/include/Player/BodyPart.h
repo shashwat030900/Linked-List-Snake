@@ -28,6 +28,10 @@ namespace Player
         void syncImageToGrid();
         float getRotationAngle();
 
+        
+
+        
+
     public:
         Level::LevelView* level_view;
         BodyPart();
@@ -45,7 +49,21 @@ namespace Player
 		void updatePosition();
         void moveSnake();
         void processSnakeCollision();
-
+        void setPosition(sf::Vector2i position);
+		
         void setDirection(Direction direction);
+
+        sf::Vector2i getNextPosition();
+
+        sf::Vector2i getNextPositionUp();
+        sf::Vector2i getNextPositionDown();
+        sf::Vector2i getNextPositionLeft();
+        sf::Vector2i getNextPositionRight();
+
+        Direction getDirection();
+        sf::Vector2i getPosition();
+        
     };
+
+
 }
