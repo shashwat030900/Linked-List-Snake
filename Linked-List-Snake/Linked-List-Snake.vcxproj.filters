@@ -488,6 +488,9 @@
     <ClInclude Include="include\Player\BodyPart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Player\Node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="sfml\include\SFML\Audio\SoundFileFactory.inl">
