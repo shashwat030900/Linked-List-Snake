@@ -1,5 +1,6 @@
 ﻿#include "Player/BodyPart.h"
 #include "Global/Config.h"
+#include "Level/LevelView.h"
 
 namespace Player
 {
@@ -35,13 +36,12 @@ namespace Player
     }
 
     
-    sf::Vector2f BodyPart::getBodyPartScreenPosition() const
+    sf::Vector2f BodyPart::getBodyPartScreenPosition()
     {
-        
-        return sf::Vector2f(
-            grid_position.x * bodypart_width + bodypart_width * 0.5f,
-            grid_position.y * bodypart_height + bodypart_height * 0.5f
-        );
+        float x_screen_position = level_view->border_left_offset + (grid_position.x * bodypart_width) + (bodypart_width / 2);
+        float y_screen_position = level_view->border_top_offset + (grid_position.y * bodypart_height) + (bodypart_height / 2);
+
+        return sf::Vector2f(x_screen_position, y_screen_position);
     }
 
    
@@ -78,8 +78,33 @@ namespace Player
     void BodyPart::reset() {}
     void BodyPart::handleRestart() {}
     void BodyPart::processPlayerInput() {}
-    void BodyPart::updateSnakeDirection() {}
+    void BodyPart::updatePosition()
+    {
+        bodypart_image->setPosition(getBodyPartScreenPosition());
+        bodypart_image->setRotation(getRotationAngle());
+        bodypart_image->update();
+    }
     void BodyPart::moveSnake() { }
     void BodyPart::processSnakeCollision() {}
     void BodyPart::update() { }
+    float BodyPart::getRotationAngle()
+    {
+        switch (direction)
+        {
+        case Direction::UP:
+            return 270.f;
+        case Direction::DOWN:
+            return 90.f;
+        case Direction::RIGHT:
+            return 0;
+        case Direction::LEFT:
+            return 180.f;
+        }
+    }
+
+    void BodyPart::setDirection(Direction direction) {
+
+        this->direction = direction;
+
+    }
 }

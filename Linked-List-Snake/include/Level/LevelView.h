@@ -10,8 +10,7 @@ namespace Level
 		const sf::Color background_color = sf::Color(180, 200, 160, 255);
 		UI::UIElement::RectangleShapeView* background_rectangle;
 
-		const float border_left_offset = 100.f;
-		const float border_top_offset = 50.f;
+		
 		const float border_thickness = 10.f;
 
 		float grid_width;
@@ -33,5 +32,8 @@ namespace Level
 
 		float getGridWidth();
 		float getGridHeight();
+		
+		const float border_top_offset = 50.f;
+		const float border_left_offset = 100.f;
 	};
 }

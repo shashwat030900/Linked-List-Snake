@@ -4,6 +4,7 @@
 #include "Direction.h"
 #include "UI/UIElement/ImageView.h"
 #include "Global/Config.h"  
+#include "Level/LevelView.h"  
 
 namespace Player
 {
@@ -23,10 +24,12 @@ namespace Player
 
         
         void initializeBodyPartImage();
-        sf::Vector2f getBodyPartScreenPosition() const;
+        sf::Vector2f getBodyPartScreenPosition();
         void syncImageToGrid();
+        float getRotationAngle();
 
     public:
+        Level::LevelView* level_view;
         BodyPart();
         virtual ~BodyPart();
 
@@ -39,8 +42,10 @@ namespace Player
         void reset();
         void handleRestart();
         void processPlayerInput();
-        void updateSnakeDirection();
+		void updatePosition();
         void moveSnake();
         void processSnakeCollision();
+
+        void setDirection(Direction direction);
     };
 }
