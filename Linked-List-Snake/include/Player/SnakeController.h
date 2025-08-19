@@ -1,4 +1,6 @@
 #pragma once
+#include <SFML/Graphics.hpp>
+#include "Player/Direction.h"
 
 
 namespace Player
@@ -30,6 +32,10 @@ namespace Player
 
         void setSnakeState(SnakeState state);
         SnakeState getSnakeState();
+
+        const sf::Vector2i default_position = sf::Vector2i(25, 13);
+        const Direction default_direction = Direction::RIGHT;
+        Direction current_snake_direction;
 
 
     public:
