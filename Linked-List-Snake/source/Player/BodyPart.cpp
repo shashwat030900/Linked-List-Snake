@@ -102,11 +102,7 @@ namespace Player
         }
     }
 
-    void BodyPart::setDirection(Direction direction) {
-
-        this->direction = direction;
-
-    }
+    
     sf::Vector2i BodyPart::getNextPosition()
     {
         switch (direction)
@@ -161,7 +157,11 @@ namespace Player
     {
         return grid_position;
     }
+    void BodyPart::setDirection(Direction direction) {
 
+        this->direction = direction;
+
+    }
 
 
 
