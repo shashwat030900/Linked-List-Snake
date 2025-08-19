@@ -1,6 +1,5 @@
 #pragma once
 #include "Player/PlayerService.h"
-
 #include "Player/SnakeController.h"
 
 namespace Player
@@ -8,7 +7,7 @@ namespace Player
     class PlayerService
     {
     private:
-        SnakeController* snake_controller;
+        Player::SnakeController* snake_controller;
 
         void createController();
 

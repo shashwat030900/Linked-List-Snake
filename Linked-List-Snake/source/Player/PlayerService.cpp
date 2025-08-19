@@ -1,4 +1,4 @@
-
+#include "Player/PlayerService.h"
 #include "Player/SnakeController.h"
 
 namespace Player
@@ -35,5 +35,6 @@ namespace Player
 
     void PlayerService::spawnPlayer()
     {
+        snake_controller->spawnSnake();
     }
 }
