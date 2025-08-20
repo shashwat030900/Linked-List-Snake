@@ -1,6 +1,7 @@
 #include "Level/LevelController.h"
 #include "Level/LevelModel.h"
 #include "Level/LevelView.h"
+#include "Level/LevelNumber.h"
 
 namespace Level
 {
@@ -30,6 +31,12 @@ namespace Level
 	void LevelController::render()
 	{
 		level_view->render();
+		level_view->renderObstacles(level_model->getCurrentLevelLayout(), level_model->getCellWidth(), level_model->getCellHeight());
+	}
+
+	void LevelController::loadLevel(LevelNumber level_number)
+	{
+		level_model->loadLevel(static_cast<int>(level_number));
 	}
 
 	float LevelController::getCellWidth()

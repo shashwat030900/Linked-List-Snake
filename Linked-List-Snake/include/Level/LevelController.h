@@ -1,4 +1,5 @@
 #pragma once
+#include "Level/LevelNumber.h"
 
 namespace Level
 {
@@ -18,6 +19,7 @@ namespace Level
         void initialize();
         void update();
         void render();
+		void loadLevel(LevelNumber level_number);
 
         float getCellWidth();
         float getCellHeight();

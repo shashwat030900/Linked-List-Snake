@@ -1,6 +1,7 @@
 #pragma once
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 #include "UI/UIElement/RectangleShapeView.h"
+#include <vector>
 
 namespace Level
 {
@@ -10,17 +11,20 @@ namespace Level
 		const sf::Color background_color = sf::Color(180, 200, 160, 255);
 		UI::UIElement::RectangleShapeView* background_rectangle;
 
-		
 		const float border_thickness = 10.f;
 
 		float grid_width;
 		float grid_height;
+
+		sf::Texture obstacle_texture;
+		sf::Sprite obstacle_sprite;
 
 		UI::UIElement::RectangleShapeView* border_rectangle;
 
 		void initializeBackground();
 		void calculateGridExtents();
 		void initializeBorder();
+		void loadObstacleTexture();
 
 	public:
 		LevelView();
@@ -29,6 +33,7 @@ namespace Level
 		void initialize();
 		void update();
 		void render();
+		void renderObstacles(const std::vector<std::vector<int>>& layout, float cell_width, float cell_height);
 
 		float getGridWidth();
 		float getGridHeight();

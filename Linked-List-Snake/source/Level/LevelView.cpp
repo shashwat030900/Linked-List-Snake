@@ -1,5 +1,6 @@
 #include "../../include/Level/LevelView.h"
 #include "../../include/Global/ServiceLocator.h"
+#include "../../include/Global/Config.h"
 
 namespace Level
 {
@@ -23,6 +24,7 @@ namespace Level
         initializeBackground();
         calculateGridExtents();
         initializeBorder();
+        loadObstacleTexture();
     }
 
     void LevelView::update()
@@ -35,6 +37,23 @@ namespace Level
     {
         background_rectangle->render();
         border_rectangle->render();
+    }
+
+    void LevelView::renderObstacles(const std::vector<std::vector<int>>& layout, float cell_width, float cell_height)
+    {
+        sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+        for (size_t i = 0; i < layout.size(); ++i)
+        {
+            for (size_t j = 0; j < layout[i].size(); ++j)
+            {
+                if (layout[i][j] == 1)
+                {
+                    obstacle_sprite.setPosition(border_left_offset + j * cell_width, border_top_offset + i * cell_height);
+                    obstacle_sprite.setScale(cell_width / obstacle_sprite.getTexture()->getSize().x, cell_height / obstacle_sprite.getTexture()->getSize().y);
+                    game_window->draw(obstacle_sprite);
+                }
+            }
+        }
     }
 
     void LevelView::initializeBackground()
@@ -60,6 +79,14 @@ namespace Level
 
         border_rectangle->initialize(border_size, border_position, border_thickness, sf::Color::Transparent, sf::Color::Black);
         border_rectangle->show();
+    }
+
+    void LevelView::loadObstacleTexture()
+    {
+        if (obstacle_texture.loadFromFile(Config::obstacle_texture_path))
+        {
+            obstacle_sprite.setTexture(obstacle_texture);
+        }
     }
 
     float LevelView::getGridWidth()
