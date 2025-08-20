@@ -18,6 +18,7 @@ namespace Level
 
 		sf::Texture obstacle_texture;
 		sf::Sprite obstacle_sprite;
+		bool obstacle_texture_loaded = false;
 
 		UI::UIElement::RectangleShapeView* border_rectangle;
 

@@ -41,6 +41,8 @@ namespace Level
 
     void LevelView::renderObstacles(const std::vector<std::vector<int>>& layout, float cell_width, float cell_height)
     {
+        if (!obstacle_texture_loaded) return;
+
         sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
         for (size_t i = 0; i < layout.size(); ++i)
         {
@@ -86,6 +88,7 @@ namespace Level
         if (obstacle_texture.loadFromFile(Config::obstacle_texture_path))
         {
             obstacle_sprite.setTexture(obstacle_texture);
+            obstacle_texture_loaded = true;
         }
     }
 
