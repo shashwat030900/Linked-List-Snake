@@ -11,6 +11,9 @@ namespace Level
         LevelNumber current_level;
 
         void spawnPlayer();
+        float cell_width = 20.f;
+        float cell_height = 20.f;
+    
 
     public:
         LevelService();
@@ -21,5 +24,8 @@ namespace Level
         void render();
 
         void createLevel(LevelNumber level_to_load);
+
+        float getCellWidth();
+        float getCellHeight();
     };
 }

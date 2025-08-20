@@ -2,14 +2,14 @@
 #include "Player/BodyPart.h"
 
 
-namespace Player
+namespace LinkedList
 {
 	
 
 
 		struct Node
 		{
-			BodyPart body_part;
+			Player::BodyPart body_part;
 			Node* next = nullptr;
 		};
 	
