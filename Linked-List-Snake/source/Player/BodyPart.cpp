@@ -96,9 +96,11 @@ namespace Player
         case Direction::DOWN:
             return 90.f;
         case Direction::RIGHT:
-            return 0;
+            return 0.f;
         case Direction::LEFT:
             return 180.f;
+        default:
+            return 0.f;
         }
     }
 
@@ -118,6 +120,9 @@ namespace Player
 
         case Direction::RIGHT:
             return getNextPositionRight();
+
+        default:
+            return grid_position;
         }
         
     }

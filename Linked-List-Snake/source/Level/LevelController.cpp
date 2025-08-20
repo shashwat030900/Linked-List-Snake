@@ -20,7 +20,7 @@ namespace Level
 	void LevelController::initialize()
 	{
 		level_view->initialize();
-		level_model->initialize(level_view->getGridWidth(), level_view->getGridHeight());
+		level_model->initialize(static_cast<int>(level_view->getGridWidth()), static_cast<int>(level_view->getGridHeight()));
 	}
 
 	void LevelController::update()

@@ -50,7 +50,7 @@ namespace Level
             {
                 if (layout[i][j] == 1)
                 {
-                    obstacle_sprite.setPosition(border_left_offset + j * cell_width, border_top_offset + i * cell_height);
+                    obstacle_sprite.setPosition(static_cast<float>(border_left_offset + j * cell_width), static_cast<float>(border_top_offset + i * cell_height));
                     obstacle_sprite.setScale(cell_width / obstacle_sprite.getTexture()->getSize().x, cell_height / obstacle_sprite.getTexture()->getSize().y);
                     game_window->draw(obstacle_sprite);
                 }
