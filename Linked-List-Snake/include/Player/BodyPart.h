@@ -27,7 +27,6 @@ namespace Player
         float getRotationAngle();
 
     public:
-        Level::LevelView* level_view;
         BodyPart();
         ~BodyPart();
 

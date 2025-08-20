@@ -1,9 +1,13 @@
 ﻿#include "Player/BodyPart.h"
 #include "Global/Config.h"
-#include "Level/LevelView.h"
+#include "Global/ServiceLocator.h"
+#include "Level/LevelService.h"
 
 namespace Player
 {
+    using namespace Global;
+    using namespace Level;
+
     BodyPart::BodyPart()
         : grid_position(0, 0), bodypart_image(nullptr)
     {
@@ -38,6 +42,7 @@ namespace Player
     
     sf::Vector2f BodyPart::getBodyPartScreenPosition()
     {
+        LevelView* level_view = ServiceLocator::getInstance()->getLevelService()->getLevelView();
         float x_screen_position = level_view->border_left_offset + (grid_position.x * bodypart_width) + (bodypart_width / 2);
         float y_screen_position = level_view->border_top_offset + (grid_position.y * bodypart_height) + (bodypart_height / 2);
 

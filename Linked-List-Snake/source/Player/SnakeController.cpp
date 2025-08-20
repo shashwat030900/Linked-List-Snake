@@ -14,7 +14,6 @@ namespace Player
     SnakeController::SnakeController()
     {
         single_linked_list = nullptr;
-        level_view = nullptr;
         createLinkedList();
     }
 
@@ -26,9 +25,8 @@ namespace Player
     }
 
         
-    void SnakeController::initialize(Level::LevelView* view)
+    void SnakeController::initialize()
     {
-            level_view = view;
             float width = ServiceLocator::getInstance()->getLevelService()->getCellWidth();
             float height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
 
@@ -59,7 +57,7 @@ namespace Player
     }
     void SnakeController::spawnSnake()
     {
-        single_linked_list->createHeadNode(level_view);
+        single_linked_list->createHeadNode();
 
 	}
 

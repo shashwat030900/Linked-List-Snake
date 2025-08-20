@@ -33,10 +33,9 @@ namespace LinkedList
 		return new Node();
 	}
 
-	void SingleLinkedList::createHeadNode(Level::LevelView* level_view)
+	void SingleLinkedList::createHeadNode()
 	{
 		head_node = createNode();
-		head_node->body_part.level_view = level_view;
 		head_node->body_part.initialize(node_width, node_height, default_position, default_direction);
 		return;
 	}
