@@ -3,6 +3,8 @@
 #include "LinkedList/Node.h"
 #include "Player/Direction.h"
 
+namespace Level { class LevelView; }
+
 namespace LinkedList
 {
 	class SingleLinkedList
@@ -27,7 +29,7 @@ namespace LinkedList
 
 		SingleLinkedList();
 		~SingleLinkedList();
-		void createHeadNode();
+		void createHeadNode(Level::LevelView* level_view);
 
 		void initialize(float width, float height, sf::Vector2i position, Player::Direction direction);
 		void render();

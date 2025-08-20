@@ -1,8 +1,14 @@
 #include "Player/PlayerService.h"
 #include "Player/SnakeController.h"
+#include "Global/ServiceLocator.h"
+#include "Level/LevelService.h"
+#include "Level/LevelView.h"
 
 namespace Player
 {
+    using namespace Global;
+    using namespace Level;
+
     PlayerService::PlayerService()
     {
         createController();
@@ -20,7 +26,8 @@ namespace Player
 
     void PlayerService::initialize()
     {
-        snake_controller->initialize();
+        LevelView* level_view = ServiceLocator::getInstance()->getLevelService()->getLevelView();
+        snake_controller->initialize(level_view);
     }
 
     void PlayerService::update()

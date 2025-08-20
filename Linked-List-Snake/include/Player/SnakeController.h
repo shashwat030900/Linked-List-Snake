@@ -3,16 +3,17 @@
 #include "LinkedList/SingleLinkedList.h"
 #include "Player/Direction.h"
 
+namespace Level { class LevelView; }
+
 namespace Player
 {
     enum class SnakeState { ALIVE, DEAD };
 
     class SnakeController
     {
-        
-
     private:
         LinkedList::SingleLinkedList* single_linked_list; 
+        Level::LevelView* level_view;
         SnakeState current_snake_state = SnakeState::ALIVE;
 
         sf::Vector2i default_position = { 0, 0 };
@@ -22,7 +23,7 @@ namespace Player
         SnakeController();
         ~SnakeController();
 
-        void initialize();
+        void initialize(Level::LevelView* view);
         void update();
         void render();
 

@@ -23,5 +23,6 @@ namespace Level
 
         float getCellWidth();
         float getCellHeight();
+        LevelView* getLevelView();
     };
 }

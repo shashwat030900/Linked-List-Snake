@@ -4,6 +4,8 @@
 
 namespace Level
 {
+    class LevelView;
+
     class LevelService
     {
     private:
@@ -27,5 +29,6 @@ namespace Level
 
         float getCellWidth();
         float getCellHeight();
+        LevelView* getLevelView();
     };
 }

@@ -55,4 +55,9 @@ namespace Level
     {
         return cell_height;
     }
+
+	LevelView* LevelService::getLevelView()
+	{
+		return level_controller->getLevelView();
+	}
 }
