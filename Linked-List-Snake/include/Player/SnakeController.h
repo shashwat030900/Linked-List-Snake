@@ -31,7 +31,7 @@ namespace Player
         void respawnSnake();
         void reset();
         void handleRestart();
-        void processPlayerInput();
+        
         void updateSnakeDirection();
         void moveSnake();
         void processSnakeCollision();

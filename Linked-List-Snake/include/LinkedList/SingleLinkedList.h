@@ -26,6 +26,7 @@ namespace LinkedList
 		SingleLinkedList();
 		~SingleLinkedList();
 		void insertNodeAtTail();
+		void  updateNodeDirection(Player::Direction direction_to_set);
 
 		void initialize(float width, float height, sf::Vector2i position, Player::Direction direction);
 		void render();

@@ -98,7 +98,16 @@ namespace LinkedList
 
 	}
 
-
+	void SingleLinkedList::updateNodeDirection(Direction direction_to_set)
+	{
+		Node* cur_node = head_node;
+		while (cur_node != nullptr) {
+			Direction previous_direction = cur_node->body_part.getDirection();
+			cur_node->body_part.setDirection(direction_to_set);
+			direction_to_set = previous_direction; 
+			cur_node = cur_node->next;
+		}
+	}
 
 
 

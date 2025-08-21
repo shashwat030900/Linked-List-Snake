@@ -66,9 +66,7 @@ namespace Player
 
 	}
 
-    void SnakeController::processPlayerInput()
-    {
-    }
+    
     void SnakeController::updateSnakeDirection()
     {
     }
