@@ -50,6 +50,8 @@ namespace Player
                 handleRestart();
                 break;
             }
+			
+
     }
 
     void SnakeController::render()
@@ -69,9 +71,11 @@ namespace Player
     
     void SnakeController::updateSnakeDirection()
     {
+		single_linked_list->updateNodeDirection(current_snake_direction);
     }
     void SnakeController::moveSnake()
     {
+        SingleLinkedList::updateNodePosition();
     }
     void SnakeController::processSnakeCollision()
     {

@@ -1,6 +1,7 @@
 #include "LinkedList/SingleLinkedList.h"
 #include "Player/BodyPart.h"
 #include "Level/LevelView.h"
+#include "Player/SnakeController.h"
 
 namespace LinkedList
 {
@@ -107,9 +108,17 @@ namespace LinkedList
 			direction_to_set = previous_direction; 
 			cur_node = cur_node->next;
 		}
+		
 	}
 
-
+	void SingleLinkedList::updateNodePosition()
+	{
+		Node* cur_node = head_node;
+		while (cur_node != nullptr) {
+			cur_node->body_part.updatePosition();
+			cur_node = cur_node->next;
+		}
+	}
 
 
 
