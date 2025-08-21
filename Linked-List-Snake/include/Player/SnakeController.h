@@ -12,6 +12,7 @@ namespace Player
     private:
         LinkedList::SingleLinkedList* single_linked_list; 
         SnakeState current_snake_state = SnakeState::ALIVE;
+		Direction current_snake_direction = Direction::RIGHT;
 
         sf::Vector2i default_position = { 48, 27 };
         Player::Direction default_direction = Direction::RIGHT;
@@ -41,5 +42,6 @@ namespace Player
     private:
         void destroy();
         void createLinkedList();
+		void processPlayerInput();
     };
 }

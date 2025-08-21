@@ -2,6 +2,7 @@
 #include "Global/ServiceLocator.h"
 #include "Level/LevelService.h"
 #include "LinkedList/SingleLinkedList.h"
+#include "Player/Direction.h"
 
 
 namespace Player
@@ -102,4 +103,28 @@ namespace Player
     {
         single_linked_list = new SingleLinkedList();
 	}
+
+    void SnakeController::processPlayerInput() {
+    
+		Event::EventService* event_service = ServiceLocator::getInstance()->getEventService();
+
+        if(event_service->pressedLeftArrowKey())
+        {
+            current_snake_direction = Direction::LEFT;
+        }
+        else if(event_service->pressedRightArrowKey())
+        {
+            current_snake_direction = Direction::RIGHT;
+        }
+        else if(event_service->pressedUpArrowKey())
+        {
+            current_snake_direction = Direction::UP;
+        }
+        else if(event_service->pressedDownArrowKey())
+        {
+            current_snake_direction = Direction::DOWN;
+		}
+    
+    
+    }
 }
