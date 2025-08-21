@@ -57,7 +57,11 @@ namespace Player
     }
     void SnakeController::spawnSnake()
     {
-        single_linked_list->createHeadNode();
+        for (int i = 0; i < initial_snake_length; i++) {
+        
+			single_linked_list->insertNodeAtTail();
+        
+        }
 
 	}
 

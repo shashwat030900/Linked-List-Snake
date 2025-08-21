@@ -20,6 +20,8 @@ namespace Player
         SnakeController();
         ~SnakeController();
 
+		const int initial_snake_length = 5; 
+
         void initialize();
         void update();
         void render();

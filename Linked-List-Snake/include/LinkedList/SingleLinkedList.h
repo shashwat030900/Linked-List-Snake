@@ -17,13 +17,15 @@ namespace LinkedList
 		Player::Direction default_direction;
 
 		LinkedList::Node* createNode();
+		sf::Vector2i getNewNodePosition(Node* reference_node);
+		
 
 	public:
 
 
 		SingleLinkedList();
 		~SingleLinkedList();
-		void createHeadNode();
+		void insertNodeAtTail();
 
 		void initialize(float width, float height, sf::Vector2i position, Player::Direction direction);
 		void render();
