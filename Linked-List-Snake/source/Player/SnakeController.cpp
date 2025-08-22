@@ -41,9 +41,10 @@ namespace Player
             {
             case SnakeState::ALIVE:
                 processPlayerInput();
-                updateSnakeDirection();
+				delayedUpdate();
+              /*  updateSnakeDirection();
                 processSnakeCollision();
-                moveSnake();
+                moveSnake();*/
                 break;
 
             case SnakeState::DEAD:
