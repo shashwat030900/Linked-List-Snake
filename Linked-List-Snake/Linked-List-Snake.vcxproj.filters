@@ -527,4 +527,7 @@
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="Linked-L.648c7e22\x64\Debug\GameService.obj" />
+  </ItemGroup>
 </Project>

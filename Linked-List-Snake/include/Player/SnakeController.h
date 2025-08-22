@@ -43,5 +43,8 @@ namespace Player
         void destroy();
         void createLinkedList();
 		void processPlayerInput();
+		const float movement_frame_duration = 0.1f;
+        void delayedUpdate();
+		float elapsed_duration;
     };
 }

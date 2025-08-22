@@ -92,11 +92,6 @@ namespace LinkedList
 		new_node->body_part.initialize(node_width, node_height, getNewNodePosition(cur_node), cur_node->body_part.getDirection());
 		
 
-
-
-
-
-
 	}
 
 	void SingleLinkedList::updateNodeDirection(Direction direction_to_set)
@@ -113,13 +108,22 @@ namespace LinkedList
 
 	void SingleLinkedList::updateNodePosition()
 	{
-		Node* cur_node = head_node;
-		while (cur_node != nullptr) {
-			cur_node->body_part.updatePosition();
-			cur_node = cur_node->next;
+		if (head_node == nullptr) {
+			return;
+		}
+
+		sf::Vector2i previous_position = head_node->body_part.getPosition();
+		sf::Vector2i next_head_position = head_node->body_part.getNextPosition();
+		head_node->body_part.setPosition(next_head_position);
+
+		Node* current_node = head_node->next;
+		while (current_node != nullptr) {
+			sf::Vector2i temp_position = current_node->body_part.getPosition();
+			current_node->body_part.setPosition(previous_position);
+			previous_position = temp_position;
+			current_node = current_node->next;
 		}
 	}
-
 
 
 }

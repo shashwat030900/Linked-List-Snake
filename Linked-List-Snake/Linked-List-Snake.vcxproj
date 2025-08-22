@@ -307,6 +307,9 @@
     <None Include="sfml\include\SFML\System\Vector2.inl" />
     <None Include="sfml\include\SFML\System\Vector3.inl" />
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="Linked-L.648c7e22\x64\Debug\GameService.obj" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
