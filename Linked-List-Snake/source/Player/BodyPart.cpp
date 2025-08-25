@@ -48,6 +48,7 @@ namespace Player
         float y_screen_position = level_view->border_top_offset + (grid_position.y * bodypart_height) + (bodypart_height / 2);
 
         return sf::Vector2f(x_screen_position, y_screen_position);
+
     }
 
    

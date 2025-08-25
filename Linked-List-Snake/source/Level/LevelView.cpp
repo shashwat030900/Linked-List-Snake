@@ -70,8 +70,8 @@ namespace Level
     void LevelView::calculateGridExtents()
     {
         sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-        grid_width = game_window->getSize().x - (2 * border_left_offset);
-        grid_height = game_window->getSize().y - (2 * border_top_offset);
+        grid_width = game_window->getSize().x;
+        grid_height = game_window->getSize().y;
     }
 
     void LevelView::initializeBorder()
