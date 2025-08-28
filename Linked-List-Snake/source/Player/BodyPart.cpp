@@ -138,22 +138,42 @@ namespace Player
 
     sf::Vector2i BodyPart::getNextPositionUp()
     {
-        return sf::Vector2i(grid_position.x, (grid_position.y - 1 + (Level::LevelModel::number_of_rows)) % (LevelModel::number_of_rows) );
+       // return sf::Vector2i(grid_position.x, (grid_position.y - 1 + (Level::LevelModel::number_of_rows)) % (LevelModel::number_of_rows) );
+        int new_y = grid_position.y - 1;
+        if (new_y < 0)
+            return sf::Vector2i(grid_position.x, -1);
+
+        return sf::Vector2i(grid_position.x, new_y);
     }
 
     sf::Vector2i BodyPart::getNextPositionDown()
     {
-        return sf::Vector2i(grid_position.x, (grid_position.y + 1) % (LevelModel::number_of_rows));
+        //return sf::Vector2i(grid_position.x, (grid_position.y + 1) % (LevelModel::number_of_rows));
+        int new_y = grid_position.y + 1;
+        if (new_y >= LevelModel::number_of_rows)
+            return sf::Vector2i(grid_position.x, LevelModel::number_of_rows);
+
+        return sf::Vector2i(grid_position.x, new_y);
     }
 
     sf::Vector2i BodyPart::getNextPositionLeft()
     {
-        return sf::Vector2i((grid_position.x - 1 + LevelModel::number_of_columns) % (LevelModel::number_of_columns), grid_position.y);
+        //return sf::Vector2i((grid_position.x - 1 + LevelModel::number_of_columns) % (LevelModel::number_of_columns), grid_position.y);
+        int new_x = grid_position.x - 1;
+        if (new_x < 0)
+            return sf::Vector2i(-1, grid_position.y);
+
+        return sf::Vector2i(new_x, grid_position.y);
     }
 
     sf::Vector2i BodyPart::getNextPositionRight()
     {
-        return sf::Vector2i((grid_position.x + 1) % (LevelModel::number_of_columns), grid_position.y);
+        //return sf::Vector2i((grid_position.x + 1) % (LevelModel::number_of_columns), grid_position.y);
+        int new_x = grid_position.x + 1;
+        if (new_x >= LevelModel::number_of_columns)
+            return sf::Vector2i(LevelModel::number_of_columns, grid_position.y);
+
+        return sf::Vector2i(new_x, grid_position.y);
     }
 
     void BodyPart::setPosition(sf::Vector2i position)

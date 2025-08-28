@@ -15,6 +15,8 @@ namespace Level
 
 		float grid_width = 0;
 		float grid_height = 0;
+		float grid_top = 0;
+		float grid_left = 0;
 
 		sf::Texture obstacle_texture;
 		sf::Sprite obstacle_sprite;
@@ -38,6 +40,8 @@ namespace Level
 
 		float getGridWidth();
 		float getGridHeight();
+		float getGridTop();
+		float getGridLeft();
 		
 		const float border_top_offset = 50.f;
 		const float border_left_offset = 50.f;

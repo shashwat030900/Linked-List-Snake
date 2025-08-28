@@ -1,6 +1,7 @@
 #include "../../include/Level/LevelView.h"
 #include "../../include/Global/ServiceLocator.h"
 #include "../../include/Global/Config.h"
+#include "Level/LevelModel.h"
 
 namespace Level
 {
@@ -69,9 +70,11 @@ namespace Level
 
     void LevelView::calculateGridExtents()
     {
-        sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-        grid_width = game_window->getSize().x;
-        grid_height = game_window->getSize().y;
+        sf::RenderWindow* game_window = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+        /*grid_width = game_window->getSize().x;
+        grid_height = game_window->getSize().y;*/
+        grid_width = game_window->getSize().x - 2 * border_left_offset;
+        grid_height = game_window->getSize().y - 2 * border_top_offset;
     }
 
     void LevelView::initializeBorder()
@@ -79,7 +82,7 @@ namespace Level
         sf::Vector2f border_size(grid_width, grid_height);
         sf::Vector2f border_position(border_left_offset, border_top_offset);
 
-        border_rectangle->initialize(border_size, border_position, border_thickness, sf::Color::Transparent, sf::Color::Black);
+        border_rectangle->initialize(border_size, border_position, 2, sf::Color::Transparent, sf::Color::Black);
         border_rectangle->show();
     }
 
@@ -101,4 +104,12 @@ namespace Level
     {
         return grid_height;
     }
+    float LevelView::getGridTop()
+    {
+        return grid_top;
+	}
+    float LevelView::getGridLeft()
+    {
+        return grid_left;
+	}
 }

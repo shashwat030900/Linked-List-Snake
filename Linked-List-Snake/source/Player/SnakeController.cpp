@@ -3,6 +3,8 @@
 #include "Level/LevelService.h"
 #include "LinkedList/SingleLinkedList.h"
 #include "Player/Direction.h"
+#include "Level/LevelView.h"
+#include "Level/LevelModel.h"
 
 
 namespace Player
@@ -77,6 +79,7 @@ namespace Player
     void SnakeController::moveSnake()
     {
         single_linked_list->updateNodePosition();
+
     }
     void SnakeController::processSnakeCollision()
     {
@@ -142,7 +145,10 @@ namespace Player
 			elapsed_duration = 0.0f;
 			updateSnakeDirection();
 			processSnakeCollision();
-			moveSnake();
+            if (current_snake_state == SnakeState::ALIVE)
+                moveSnake();
+
+			//moveSnake();
         
         }
     

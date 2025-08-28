@@ -27,13 +27,13 @@ namespace LinkedList
 		
 		Node* cur_node = head_node;
 
-		while(cur_node != nullptr) {
-			cur_node->body_part.updatePosition();
-			cur_node->body_part.render();
-			cur_node = cur_node->next;
+			while(cur_node != nullptr) {
+				cur_node->body_part.updatePosition();
+				cur_node->body_part.render();
+				cur_node = cur_node->next;
 		}
 
-		head_node->body_part.render();
+		//head_node->body_part.render();
 
 	}
 
