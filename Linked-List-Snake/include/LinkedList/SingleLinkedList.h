@@ -19,8 +19,8 @@ namespace LinkedList
 		LinkedList::Node* createNode();
 		sf::Vector2i getNewNodePosition(Node* reference_node);
 		
-		
-		
+		void removeNodeAtHead();
+		void removeAllNodes();
 
 	public:
 
