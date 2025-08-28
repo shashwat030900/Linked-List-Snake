@@ -33,6 +33,10 @@ namespace Player
             float width = ServiceLocator::getInstance()->getLevelService()->getCellWidth();
             float height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
 
+            int columns = LevelModel::number_of_columns;
+            int rows = LevelModel::number_of_rows;
+            default_position = { columns / 2, rows / 2 };
+
             single_linked_list->initialize(width, height, default_position, default_direction);
     }
 

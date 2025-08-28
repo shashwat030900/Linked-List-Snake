@@ -21,6 +21,9 @@ namespace Level
     void LevelService::initialize()
     {
         level_controller->initialize();
+        cell_width = level_controller->getCellWidth();
+        cell_height = level_controller->getCellHeight();
+
     }
 
     void LevelService::update()
