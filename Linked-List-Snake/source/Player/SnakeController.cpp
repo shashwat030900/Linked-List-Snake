@@ -87,6 +87,12 @@ namespace Player
     }
     void SnakeController::processSnakeCollision()
     {
+
+        if(single_linked_list->processNodeCollision())
+        {
+            setSnakeState(SnakeState::DEAD);
+		}
+
     }
     void SnakeController::handleRestart()
     {
@@ -150,7 +156,7 @@ namespace Player
 			updateSnakeDirection();
 			processSnakeCollision();
             if (current_snake_state == SnakeState::ALIVE)
-                moveSnake();
+            moveSnake();
 
 			//moveSnake();
         
