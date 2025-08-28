@@ -22,6 +22,7 @@ namespace Graphics
 	{
 		configureVideoMode();
 		return new sf::RenderWindow(video_mode, game_window_title, sf::Style::Default);
+		
 	}
 
 	void GraphicService::configureVideoMode()
