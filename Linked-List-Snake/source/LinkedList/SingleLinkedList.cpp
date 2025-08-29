@@ -13,7 +13,9 @@ namespace LinkedList
 		head_node = nullptr;
 	}
 
+	
 	SingleLinkedList::~SingleLinkedList() = default;
+
 
 	void SingleLinkedList::initialize(float width, float height, sf::Vector2i position, Direction direction)
 	{

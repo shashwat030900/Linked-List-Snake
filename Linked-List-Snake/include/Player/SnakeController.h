@@ -18,6 +18,14 @@ namespace Player
         sf::Vector2i default_position{};
         Player::Direction default_direction = Direction::RIGHT;
 
+        void destroy();
+        void createLinkedList();
+        void processPlayerInput();
+        const float movement_frame_duration = 0.1f;
+        void delayedUpdate();
+        float elapsed_duration;
+		
+
     public:
         SnakeController();
         ~SnakeController();
@@ -39,13 +47,8 @@ namespace Player
         
         void setSnakeState(SnakeState state);
         SnakeState getSnakeState();
-
-    private:
-        void destroy();
-        void createLinkedList();
-		void processPlayerInput();
-		const float movement_frame_duration = 0.1f;
-        void delayedUpdate();
-		float elapsed_duration;
+        const float restart_duration = 2.f;
+   
+      
     };
 }

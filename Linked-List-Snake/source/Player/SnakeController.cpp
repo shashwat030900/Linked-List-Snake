@@ -99,9 +99,16 @@ namespace Player
     }
     void SnakeController::reset()
     {
+        current_snake_state = SnakeState::ALIVE;
+        current_snake_direction = default_direction;
+        elapsed_duration = 0.f;
+        restart_duration = 0.f;
     }
     void SnakeController::respawnSnake()
     {
+        single_linked_list->removeAllNodes();
+		reset();
+		spawnSnake();
     }
     void SnakeController::setSnakeState(SnakeState state)
     {
@@ -114,6 +121,7 @@ namespace Player
     void SnakeController::destroy()
     {
 		delete (single_linked_list);
+
 	}
     void SnakeController::createLinkedList()
     {
