@@ -1,5 +1,5 @@
 #pragma once
-
+#include <SFML/System/Vector2.hpp>
 #include "LinkedList/SingleLinkedList.h"
 #include "Player/Direction.h"
 
@@ -23,8 +23,8 @@ namespace Player
         void processPlayerInput();
         const float movement_frame_duration = 0.1f;
         void delayedUpdate();
-        float elapsed_duration;
-		
+        float elapsed_duration = o.of;
+        float restart_counter = 0.f;
 
     public:
         SnakeController();

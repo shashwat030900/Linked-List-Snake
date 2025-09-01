@@ -16,8 +16,9 @@ namespace Player
 
     SnakeController::SnakeController()
     {
-        single_linked_list = nullptr;
+		single_linked_list = new SingleLinkedList();
         createLinkedList();
+        elapsed_duration = 0.f;
     }
 
     
@@ -96,13 +97,19 @@ namespace Player
     }
     void SnakeController::handleRestart()
     {
+        restart_counter += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+        if (restart_counter >= restart_duration)
+        {
+            respawnSnake();
+        }
     }
     void SnakeController::reset()
     {
         current_snake_state = SnakeState::ALIVE;
         current_snake_direction = default_direction;
         elapsed_duration = 0.f;
-        restart_duration = 0.f;
+        restart_counter = 0.f;
     }
     void SnakeController::respawnSnake()
     {
