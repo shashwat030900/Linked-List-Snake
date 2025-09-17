@@ -5,6 +5,7 @@
 #include "Player/Direction.h"
 #include "Level/LevelView.h"
 #include "Level/LevelModel.h"
+#include "Event/EventService.h"
 
 
 namespace Player
@@ -110,6 +111,7 @@ namespace Player
         current_snake_direction = default_direction;
         elapsed_duration = 0.f;
         restart_counter = 0.f;
+		current_input_state = InputState::WAITING;
     }
     void SnakeController::respawnSnake()
     {
@@ -135,30 +137,33 @@ namespace Player
         single_linked_list = new SingleLinkedList();
 	}
 
-    void SnakeController::processPlayerInput() {
-    
-		Event::EventService* event_service = ServiceLocator::getInstance()->getEventService();
+    void SnakeController::processPlayerInput()
+    {
+        if (current_input_state == InputState::PROCESSING)
+            return;
 
-        if (event_service->pressedLeftArrowKey() && current_snake_direction != Direction::RIGHT)
-        {
-            current_snake_direction = Direction::LEFT;
-        }
-        else if (event_service->pressedRightArrowKey() && current_snake_direction != Direction::LEFT)
-        {
-            current_snake_direction = Direction::RIGHT;
-        }
-        else if (event_service->pressedUpArrowKey() && current_snake_direction != Direction::DOWN)
+        Event::EventService* event_service = ServiceLocator::getInstance()->getEventService();
+
+        if (event_service->pressedUpArrowKey() && current_snake_direction != Direction::DOWN)
         {
             current_snake_direction = Direction::UP;
+            current_input_state = InputState::PROCESSING;
         }
         else if (event_service->pressedDownArrowKey() && current_snake_direction != Direction::UP)
         {
             current_snake_direction = Direction::DOWN;
+            current_input_state = InputState::PROCESSING;
         }
-
- 
-
-    
+        else if (event_service->pressedLeftArrowKey() && current_snake_direction != Direction::RIGHT)
+        {
+            current_snake_direction = Direction::LEFT;
+            current_input_state = InputState::PROCESSING;
+        }
+        else if (event_service->pressedRightArrowKey() && current_snake_direction != Direction::LEFT)
+        {
+            current_snake_direction = Direction::RIGHT;
+            current_input_state = InputState::PROCESSING;
+        }
     }
 
     void SnakeController::delayedUpdate() {
@@ -171,10 +176,12 @@ namespace Player
 			elapsed_duration = 0.0f;
 			updateSnakeDirection();
 			processSnakeCollision();
+
             if (current_snake_state == SnakeState::ALIVE)
             moveSnake();
 
 			//moveSnake();
+			current_input_state = InputState::WAITING;
         
         }
     

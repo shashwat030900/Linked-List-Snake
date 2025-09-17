@@ -5,7 +5,12 @@
 
 namespace Player
 {
-    enum class SnakeState { ALIVE, DEAD };
+    enum class SnakeState { ALIVE, DEAD }; \
+        enum class InputState
+    {
+        WAITING,
+		PROCESSING
+    };
 
     class SnakeController
     {
@@ -23,8 +28,10 @@ namespace Player
         void processPlayerInput();
         const float movement_frame_duration = 0.1f;
         void delayedUpdate();
-        float elapsed_duration = o.of;
+        float elapsed_duration = 2.f;
         float restart_counter = 0.f;
+
+        InputState current_input_state;
 
     public:
         SnakeController();

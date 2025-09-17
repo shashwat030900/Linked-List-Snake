@@ -137,10 +137,12 @@ namespace LinkedList
 		while (cur_node != nullptr) {
 			if (cur_node->body_part.getPosition() == predicted_position) {
 				return true; 
-				cur_node = cur_node->next;
+				
 			}
-			return false;
+			cur_node = cur_node->next;
+			
 		}
+		return false;
 	}
 	void SingleLinkedList::removeNodeAtHead()
 	{
