@@ -45,5 +45,8 @@ namespace Level
 		
 		const float border_top_offset = 50.f;
 		const float border_left_offset = 50.f;
+
+		float getBorderLeftOffset() const { return 50.f; }
+		float getBorderTopOffset()  const { return 50.f; }
 	};
 }

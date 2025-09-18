@@ -1,29 +1,30 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 #include "UI/UIElement/ImageView.h"
 
-namespace Element {
+namespace Level { class LevelView; } 
 
-	class Obstacle {
+namespace Element
+{
+    class Obstacle
+    {
+    private:
+        sf::Vector2i grid_position;
+        float cell_width = 0;
+        float cell_height = 0;
 
-	public:
-		Obstacle();
-		~Obstacle();
-		void render();
-		void update();
+        UI::UIElement::ImageView* obstacle_image = nullptr;
+        Level::LevelView* level_view = nullptr; 
 
-	private:
-		UI::UIElement::ImageView* obstacle_image;
-		sf::Vector2i grid_position;
-		float cell_width;
-		float cell_height;
+        void initializeObstacleImage();
+        sf::Vector2f getObstacleImagePosition();
 
+    public:
+        Obstacle(Level::LevelView* view); 
+        ~Obstacle();
 
-
-
-	};
-
-
-
-
-
+        void initialize(sf::Vector2i grid_pos, float width, float height);
+        void update();
+        void render();
+    };
 }
