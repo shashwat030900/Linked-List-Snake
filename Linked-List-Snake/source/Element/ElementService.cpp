@@ -46,7 +46,8 @@ namespace Element
 	void ElementService::spawnObstacle(sf::Vector2i position, float cell_width, float cell_height)
 	{
 		
-		Obstacle* obstacle = new Obstacle();
+		Level::LevelView* level_view = Global::ServiceLocator::getInstance()->getLevelService()->getLevelView();
+		Obstacle* obstacle = new Obstacle(level_view);
 
 		obstacle->initialize(position, cell_width, cell_height);
 		obstacle_list.push_back(obstacle);
