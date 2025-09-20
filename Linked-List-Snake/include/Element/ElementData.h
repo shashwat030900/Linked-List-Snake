@@ -19,4 +19,4 @@ namespace Element
         ElementType element_type;
         sf::Vector2i position;
     };
-}
+}   
