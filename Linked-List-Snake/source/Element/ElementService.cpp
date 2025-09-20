@@ -1,9 +1,10 @@
 #include "Element/ElementService.h"
-#include "Level/LevelModel.h"
+#include "Element/ElementData.h"
+#include "Element/Obstacle.h"
 #include "Global/ServiceLocator.h"
 #include "Level/LevelController.h"
-#include "Element/Obstacle.h"
-#include "Level/LevelModel.h"
+#include "Level/LevelView.h"
+#include "Level/LevelService.h"
 
 namespace Element
 {
@@ -35,7 +36,7 @@ namespace Element
 		{
 			switch (element_data_list[i].element_type)
 			{
-			case::Element::ElementType::OBSTACLE:
+			case Element::ElementType::OBSTACLE:
 				spawnObstacle(element_data_list[i].position, cell_width, cell_height);
 				break;
 			}
@@ -44,6 +45,7 @@ namespace Element
 
 	void ElementService::spawnObstacle(sf::Vector2i position, float cell_width, float cell_height)
 	{
+		
 		Obstacle* obstacle = new Obstacle();
 
 		obstacle->initialize(position, cell_width, cell_height);
