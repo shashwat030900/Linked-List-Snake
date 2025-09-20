@@ -1,51 +1,27 @@
 #pragma once
 #include <vector>
-#include "Element/Obstacle.h"
+#include <SFML/System/Vector2.hpp>
 
+namespace Element
+{
+	class Obstacle;
+	struct ElementData;
 
-namespace Element {
+	class ElementService
+	{
+	private:
+		std::vector<Obstacle*> obstacle_list;
 
-	class ElementService {
-	
+		void spawnObstacle(sf::Vector2i position, float cell_width, float cell_height);
+
 	public:
 		ElementService();
 		~ElementService();
 
 		void initialize();
-		void render();
 		void update();
-	
-	
-	
-	
-	
-	private:
+		void render();
 
-		std::vector<Obstacle*> obstacle_list;
-		void spawnObstacle(sf::Vector2i position, float cell_width, float cell_height);
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		const void spawnElements(std::vector<ElementData>& element_data_list, float cell_width, float cell_height);
 	};
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
