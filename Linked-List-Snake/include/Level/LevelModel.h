@@ -11,6 +11,10 @@ namespace Level
         std::vector<LevelData> level_configurations;
         std::vector<std::vector<int>> current_level_layout;
 
+        std::vector<Element::ElementData> level_one_element_list;
+        std::vector<Element::ElementData> level_two_element_list;
+        std::vector<LevelData> level_configurations;
+
         float cell_width;
         float cell_height;
 

@@ -88,6 +88,7 @@ namespace Global
 		delete(time_service);
 		delete(level_service);
 		delete(player_service);
+		delete(element_service);
 	}
 
 	ServiceLocator* ServiceLocator::getInstance()
@@ -111,4 +112,6 @@ namespace Global
 	Player::PlayerService* ServiceLocator::getPlayerService() { return player_service; }
 
 	void ServiceLocator::deleteServiceLocator() { delete(this); }
+
+	Element::ElementService* ServiceLocator::getElementService() { return element_service; }
 }
