@@ -38,4 +38,12 @@ namespace Level
 	{
 		return cell_height;
 	}
+	void LevelModel::loadLevel(int level_number)
+	{
+		current_level_layout = level_configurations[level_number].layout;
+	}
+	const std::vector<std::vector<int>>& LevelModel::getCurrentLevelLayout() const
+	{
+		return current_level_layout;
+	}
 }
