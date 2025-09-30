@@ -12,7 +12,7 @@ namespace Food {
 		float cell_height;
 		FoodType food_type;
 
-		
+		void initializeFoodImage();
 
 	public:
 		FoodItem();
