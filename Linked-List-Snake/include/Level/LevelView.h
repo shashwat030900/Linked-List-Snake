@@ -43,8 +43,8 @@ namespace Level
 		float getGridTop();
 		float getGridLeft();
 		
-		const float border_top_offset = 50.f;
-		const float border_left_offset = 50.f;
+		static const float border_top_offset;
+		static const float border_left_offset;
 
 		static float getBorderLeftOffset();
 		static float getBorderTopOffset();

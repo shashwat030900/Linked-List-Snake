@@ -112,4 +112,16 @@ namespace Level
     {
         return grid_left;
 	}
+    float LevelView::getBorderLeftOffset()
+    {
+        return border_left_offset;
+    }
+
+    float LevelView::getBorderTopOffset()
+    {
+        return border_top_offset;
+    }
+    const float LevelView::border_left_offset = 50.f;
+    const float LevelView::border_top_offset = 50.f;
+    
 }
