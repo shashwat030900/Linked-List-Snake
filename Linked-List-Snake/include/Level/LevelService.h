@@ -13,9 +13,12 @@ namespace Level
         LevelNumber current_level;
 
         void spawnPlayer();
+        void spawnFood();
         float cell_width = 20.f;
         float cell_height = 20.f;
         void spawnLevelElements(LevelNumber level_to_load);
+
+        
     
 
     public:

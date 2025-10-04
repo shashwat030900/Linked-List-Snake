@@ -56,4 +56,18 @@ namespace Food {
 		float screen_position_y = Level::LevelView::getBorderTopOffset() + (cell_height * grid_position.y);
 		return sf::Vector2f(screen_position_x, screen_position_y);
 	}
+	void FoodItem::initialize(sf::Vector2i gridPos, float cellW, float cellH, FoodType type)
+	{
+		grid_position = gridPos;
+		cell_width    = cellW;
+		cell_height   = cellH;
+		food_type     = type;
+		initializeFoodImage();
+	}
+
+	void FoodItem::initializeFoodImage()
+	{
+		
+	}
+
 }

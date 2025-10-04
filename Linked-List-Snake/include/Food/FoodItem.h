@@ -22,10 +22,11 @@ namespace Food {
 
 		void update();
 		void render();
+
 		sf::String getFoodTexturePath();
 		sf::Vector2f getFoodImagePosition();
 
-
+		void initialize(sf::Vector2i gridPos, float cellW, float cellH, FoodType type);
 
 
 	};

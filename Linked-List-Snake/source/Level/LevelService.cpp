@@ -2,12 +2,14 @@
 #include "../../include/Level/LevelController.h"
 #include "Global/ServiceLocator.h"
 #include "Player/PlayerService.h"
-#include "Element/ElementData.h" // Add this include
+#include "Food/FoodService.h"
+#include "Element/ElementData.h" 
 
 namespace Level
 {
     using namespace Global;
     using namespace Player;
+	using namespace Food;
 
     LevelService::LevelService()
     {
@@ -42,6 +44,7 @@ namespace Level
         current_level = level_to_load;
         //level_controller->loadLevel(level_to_load);
         spawnPlayer();
+		spawnFood();
 		spawnLevelElements(level_to_load);
     }
 
@@ -73,4 +76,8 @@ namespace Level
         std::vector<Element::ElementData> element_data_list = level_controller->getElementDataList((int)level_to_load);
         ServiceLocator::getInstance()->getElementService()->spawnElements(element_data_list, cell_width, cell_height);
     }
+    void LevelService::spawnFood()
+    {
+        ServiceLocator::getInstance()->getFoodService()->startFoodSpawning();
+	}   
 }
