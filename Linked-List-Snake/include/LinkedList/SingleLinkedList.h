@@ -21,6 +21,7 @@ namespace LinkedList
 		
 		void removeNodeAtHead();
 		
+		
 
 	public:
 
@@ -34,6 +35,6 @@ namespace LinkedList
 		void render();
 		bool processNodeCollision();
 		void removeAllNodes();
-		
+		std::vector<sf::Vector2i> getNodesPositionList();
 	};
 }

@@ -21,6 +21,14 @@ namespace Food
 
 		void destroyFood();
 
+		std::default_random_engine random_engine;
+		std::random_device random_device;
+
+		sf::Vector2i getRandomPosition();
+		bool isValidPosition(std::vector<sf::Vector2i> position_data, sf::Vector2i food_position);
+		sf::Vector2i getValidSpawnPosition();
+		FoodType getRandomFoodType();
+
 	public:
 		FoodService();
 		~FoodService();

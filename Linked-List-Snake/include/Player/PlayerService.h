@@ -20,6 +20,8 @@ namespace Player
         void render();
 
         void spawnPlayer();
+
+        std::vector<sf::Vector2i> getCurrentSnakePositionList();
     };
 }
 

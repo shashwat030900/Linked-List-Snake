@@ -183,18 +183,13 @@ namespace Player
 			//moveSnake();
 			current_input_state = InputState::WAITING;
         
-        }
-    
-    
-    
-    
-    
-    
-    
-    
+        } 
     }
 
-
+    std::vector<sf::Vector2i> SnakeController::getCurrentSnakePositionList()
+    {
+        return single_linked_list->getNodesPositionList();
+    }
 
 
 

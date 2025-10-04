@@ -55,6 +55,8 @@ namespace Player
         void setSnakeState(SnakeState state);
         SnakeState getSnakeState();
         const float restart_duration = 2.f;
+        std::vector<sf::Vector2i> getCurrentSnakePositionList();
+        
    
       
     };

@@ -12,12 +12,12 @@ namespace Element
         sf::Vector2i grid_position;
         float cell_width = 0;
         float cell_height = 0;
-
+        sf::Vector2f getObstacleImagePosition();
         UI::UIElement::ImageView* obstacle_image = nullptr;
         Level::LevelView* level_view = nullptr; 
 
         void initializeObstacleImage();
-        sf::Vector2f getObstacleImagePosition();
+        
 
     public:
         Obstacle(Level::LevelView* view); 
@@ -26,5 +26,7 @@ namespace Element
         void initialize(sf::Vector2i grid_pos, float width, float height);
         void update();
         void render();
+       
+		sf::Vector2i getObstaclePosition();
     };
 }
