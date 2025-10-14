@@ -21,7 +21,7 @@ namespace Main
 	private:
 		static GameState current_state;
 
-		Global::ServiceLocator* service_locator;
+		
 		sf::RenderWindow* game_window;
 
 		void initialize();
@@ -30,6 +30,7 @@ namespace Main
 		void destroy();
 
 	public:
+		Global::ServiceLocator* service_locator;
 		GameService();
 		virtual ~GameService();
 

@@ -14,6 +14,7 @@ namespace Food
 	FoodService::FoodService() : random_engine(random_device())
 	{
 		current_food_item = nullptr;
+		current_spawning_status = FoodSpawningStatus::IN_ACTIVE;
 	}
 
 	FoodService::~FoodService()
@@ -23,7 +24,7 @@ namespace Food
 
 	void FoodService::initialize()
 	{
-		elapsed_duration = spawn_duration;
+		reset();
 	}
 
 	void FoodService::update()
@@ -32,9 +33,15 @@ namespace Food
 		{
 			updateElapsedDuration();
 			handleFoodSpawning();
+			if (elapsed_duration >= spawn_duration) {
+				// Food should spawn here
+				printf("Spawning food at elapsed time: %f\n", elapsed_duration);
+			}
 		}
 
-		if (current_food_item) current_food_item->update();
+		if (current_food_item) {
+			current_food_item->update();
+		}
 	}
 
 	void FoodService::render()
@@ -45,7 +52,7 @@ namespace Food
 	void FoodService::startFoodSpawning()
 	{
 		current_spawning_status = FoodSpawningStatus::ACTIVE;
-
+		reset();
 		cell_width = ServiceLocator::getInstance()->getLevelService()->getCellWidth();
 		cell_height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
 	}
@@ -95,9 +102,9 @@ namespace Food
 
 	FoodType FoodService::getRandomFoodType()
 	{
-		std::uniform_int_distribution<int> distribution(0, FoodItem::number_of_foods - 1);
-
+		std::uniform_int_distribution<int> distribution(0, static_cast<int>(FoodType::COUNT) - 1);
 		return static_cast<FoodType>(distribution(random_engine));
+	
 	}
 
 	bool FoodService::isValidPosition(std::vector<sf::Vector2i> position_data, sf::Vector2i food_position)
@@ -111,7 +118,12 @@ namespace Food
 
 	void FoodService::destroyFood()
 	{
-		if (current_food_item) delete(current_food_item);
+		//if (current_food_item) delete(current_food_item);
+		if (current_food_item)
+		{
+			delete current_food_item;
+			current_food_item = nullptr;
+		}
 	}
 
 	void FoodService::updateElapsedDuration()

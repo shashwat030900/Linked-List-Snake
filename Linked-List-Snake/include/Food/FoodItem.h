@@ -1,37 +1,26 @@
 #pragma once
-#include "UI/UIElement/ImageView.h"
+#include <SFML/Graphics.hpp>
 #include "Food/FoodType.h"
+#include "UI/UIElement/ImageView.h"
+
 namespace Food {
+    class FoodItem {
+    private:
+        FoodType food_type;
+        float cell_width;
+        float cell_height;
+        sf::Vector2i grid_position;
+        UI::UIElement::ImageView* food_image; // pointer
 
-	class FoodItem {
+    public:
+        FoodItem();
+        ~FoodItem();
 
-	private:
-		UI::UIElement::ImageView* food_image;
-		sf::Vector2i grid_position;
-		float cell_width;
-		float cell_height;
-		FoodType food_type;
-
-		void initializeFoodImage();
-
-	public:
-		FoodItem();
-		~FoodItem();
-
-		static const int number_of_foods = 8;
-
-		void update();
-		void render();
-
-		sf::String getFoodTexturePath();
-		sf::Vector2f getFoodImagePosition();
-
-		void initialize(sf::Vector2i gridPos, float cellW, float cellH, FoodType type);
-
-
-	};
-
-
-
-
+        void initialize(sf::Vector2i gridPos, float cellW, float cellH, FoodType type);
+        sf::String getFoodTexturePath();
+        void update();
+        void render();
+        sf::Vector2f getFoodImagePosition();
+        void initializeFoodImage();
+    };
 }
