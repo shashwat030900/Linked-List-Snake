@@ -10,12 +10,12 @@ namespace Food {
         float cell_width;
         float cell_height;
         sf::Vector2i grid_position;
-        UI::UIElement::ImageView* food_image; // pointer
+        UI::UIElement::ImageView* food_image; 
 
     public:
         FoodItem();
         ~FoodItem();
-
+		static const int number_of_food = 8; 
         void initialize(sf::Vector2i gridPos, float cellW, float cellH, FoodType type);
         sf::String getFoodTexturePath();
         void update();

@@ -55,7 +55,9 @@ namespace Food {
 
 	void FoodItem::render() {
 		
-		
+		if (food_image) {
+			food_image->render(); 
+		}
 	}
 
 	sf::Vector2f FoodItem::getFoodImagePosition()

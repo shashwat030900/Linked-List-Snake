@@ -29,6 +29,7 @@ namespace Food
 
 	void FoodService::update()
 	{
+		printf("FoodService update called\n");
 		if (current_spawning_status == FoodSpawningStatus::ACTIVE)
 		{
 			updateElapsedDuration();
@@ -46,7 +47,11 @@ namespace Food
 
 	void FoodService::render()
 	{
-		if (current_food_item) current_food_item->render();
+		//if (current_food_item) current_food_item->render();
+		if (current_food_item) {
+			printf("Rendering food item\n");
+			current_food_item->render();
+		}
 	}
 
 	void FoodService::startFoodSpawning()
@@ -59,9 +64,13 @@ namespace Food
 
 	void FoodService::stopFoodSpawning()
 	{
+		printf("Food spawning started\n");
 		current_spawning_status = FoodSpawningStatus::IN_ACTIVE;
-		destroyFood();
+		//destroyFood();
 		reset();
+		cell_width = ServiceLocator::getInstance()->getLevelService()->getCellWidth();
+		cell_height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
+	
 	}
 
 	FoodItem* FoodService::createFood(sf::Vector2i position, FoodType type)
@@ -73,6 +82,7 @@ namespace Food
 
 	void FoodService::spawnFood()
 	{
+		printf("Spawning new food item\n");
 		current_food_item = createFood(getValidSpawnPosition(), getRandomFoodType());
 	}
 
@@ -102,7 +112,7 @@ namespace Food
 
 	FoodType FoodService::getRandomFoodType()
 	{
-		std::uniform_int_distribution<int> distribution(0, static_cast<int>(FoodType::COUNT) - 1);
+		std::uniform_int_distribution<int> distribution(0, FoodItem::number_of_food - 1);
 		return static_cast<FoodType>(distribution(random_engine));
 	
 	}
