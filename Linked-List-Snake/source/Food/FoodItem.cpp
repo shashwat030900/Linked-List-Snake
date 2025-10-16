@@ -87,5 +87,13 @@ namespace Food {
 		food_image->initialize(food_texture_path, cell_width, cell_height, screen_position);
 		food_image->show();
 	}
+	sf::Vector2i FoodItem::getFoodPosition()
+	{
+		return grid_position;
+	}
 
+	FoodType FoodItem::getFoodType()
+	{
+		return food_type;
+	}
 }

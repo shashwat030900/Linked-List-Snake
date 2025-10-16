@@ -2,6 +2,7 @@
 #include <SFML/System/Vector2.hpp>
 #include "LinkedList/SingleLinkedList.h"
 #include "Player/Direction.h"
+#include "Food/FoodType.h"
 
 namespace Player
 {
@@ -55,6 +56,8 @@ namespace Player
         void processBodyCollision();
         void processElementsCollision();
         void processFoodCollision();
+
+        void OnFoodCollected(Food::FoodType food_type);
         
         void setSnakeState(SnakeState state);
         SnakeState getSnakeState();

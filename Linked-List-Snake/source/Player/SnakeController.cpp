@@ -8,6 +8,8 @@
 #include "Event/EventService.h"
 #include "Sound/SoundService.h"
 #include "Element/ElementService.h"
+#include "Food/FoodType.h"
+#include "Sound/SoundService.h"
 
 
 namespace Player
@@ -219,9 +221,55 @@ namespace Player
 
     void SnakeController::processFoodCollision()
     {
+        Food::FoodService* food_service = ServiceLocator::getInstance()->getFoodService();
+        Food::FoodType food_type;
+
+        if (food_service->processFoodCollision(single_linked_list->getHeadNode(), food_type))
+        {
+            ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::PICKUP);
+
+            food_service->destroyFood();
+            OnFoodCollected(food_type);
+        }
     }
 
+    void SnakeController::OnFoodCollected(Food::FoodType food_type)
+    {
+        switch (food_type)
+        {
+        case Food::FoodType::PIZZA:
+            //Insert At Tail
+            break;
 
+        case Food::FoodType::BURGER:
+            //Insert At Head
+            break;
+
+        case Food::FoodType::CHEESE:
+            //Insert in Middle
+            break;
+
+        case Food::FoodType::APPLE:
+            //Delete at Head
+            break;
+
+        case Food::FoodType::MANGO:
+            //Delete at Middle
+            break;
+
+        case Food::FoodType::ORANGE:
+            //Delete at Tail
+            break;
+
+        case Food::FoodType::POISION:
+            //Delete half the snake
+            break;
+
+        case Food::FoodType::ALCOHOL:
+            //Reverse the snake
+            break;
+        }
+    }
 
 
 
