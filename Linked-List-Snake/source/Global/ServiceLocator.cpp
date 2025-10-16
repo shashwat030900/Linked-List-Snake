@@ -12,6 +12,7 @@ namespace Global
 	using namespace Player;
 	using namespace Element;
 	using namespace Food;
+	using namespace Element;
 
 	ServiceLocator::ServiceLocator()
 	{
@@ -39,7 +40,7 @@ namespace Global
 		time_service = new TimeService();
 		level_service = new LevelService();
 		player_service = new PlayerService();
-		element_service = new ElementService();
+        element_service = new Element::ElementService();
 		food_service = new FoodService();
 	}
 
