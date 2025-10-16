@@ -176,4 +176,5 @@ namespace LinkedList
 		return nodes_position_list;
 	}
 
+
 }

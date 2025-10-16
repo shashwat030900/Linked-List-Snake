@@ -5,6 +5,8 @@
 
 namespace LinkedList
 {
+	
+
 	class SingleLinkedList
 	{
 	private:
@@ -36,5 +38,6 @@ namespace LinkedList
 		bool processNodeCollision();
 		void removeAllNodes();
 		std::vector<sf::Vector2i> getNodesPositionList();
+		
 	};
 }

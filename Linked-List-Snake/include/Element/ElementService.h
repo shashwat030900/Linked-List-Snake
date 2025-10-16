@@ -14,6 +14,8 @@ namespace Element
 
 		void spawnObstacle(sf::Vector2i position, float cell_width, float cell_height);
 
+		
+
 	public:
 		ElementService();
 		~ElementService();
@@ -21,6 +23,8 @@ namespace Element
 		void initialize();
 		void update();
 		void render();
+
+		bool processElementsCollision(LinkedList::Node* head_node);
 
 		const void spawnElements(std::vector<ElementData>& element_data_list, float cell_width, float cell_height);
 		std::vector<sf::Vector2i> getElementsPositionList();

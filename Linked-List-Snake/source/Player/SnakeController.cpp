@@ -7,6 +7,7 @@
 #include "Level/LevelModel.h"
 #include "Event/EventService.h"
 #include "Sound/SoundService.h"
+#include "Element/ElementService.h"
 
 
 namespace Player
@@ -203,6 +204,12 @@ namespace Player
     
     void SnakeController::processElementsCollision()
     {
+        Element::ElementService* element_service = ServiceLocator::getInstance()->getElementService();
+        if (element_service->processElementsCollision(single_linked_list->getHeadNode()))
+        {
+            current_snake_state = SnakeState::DEAD;
+            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
+		}
     }
 
     void SnakeController::processFoodCollision()
