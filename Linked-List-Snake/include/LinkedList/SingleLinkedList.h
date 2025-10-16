@@ -1,43 +1,30 @@
 #pragma once
+#include <vector>
 #include <SFML/System/Vector2.hpp>
-#include "LinkedList/Node.h"
-#include "Player/Direction.h"
+#include "LinkedList/SingleLinkedList.h" 
 
-namespace LinkedList
+namespace Element
 {
-	
+    class Obstacle;
+    struct ElementData;
 
-	class SingleLinkedList
-	{
-	private:
+    class ElementService
+    {
+    private:
+        std::vector<Obstacle*> obstacle_list;
 
-		LinkedList::Node* head_node;
-		float node_width;
-		float node_height;
+        void spawnObstacle(sf::Vector2i position, float cell_width, float cell_height);
 
-		sf::Vector2i default_position;
-		Player::Direction default_direction;
+    public:
+        ElementService();
+        ~ElementService();
 
-		LinkedList::Node* createNode();
-		sf::Vector2i getNewNodePosition(Node* reference_node);
-		
-		void removeNodeAtHead();
-		
-		
+        void initialize();
+        void update();
+        void render();
 
-	public:
-
-		void updateNodePosition();
-		SingleLinkedList();
-		~SingleLinkedList();
-		void insertNodeAtTail();
-		void  updateNodeDirection(Player::Direction direction_to_set);
-
-		void initialize(float width, float height, sf::Vector2i position, Player::Direction direction);
-		void render();
-		bool processNodeCollision();
-		void removeAllNodes();
-		std::vector<sf::Vector2i> getNodesPositionList();
-		
-	};
+        void spawnElements(std::vector<ElementData>& element_data_list, float cell_width, float cell_height);
+        std::vector<sf::Vector2i> getElementsPositionList();
+        bool processElementsCollision(LinkedList::Node* head_node);
+    };
 }

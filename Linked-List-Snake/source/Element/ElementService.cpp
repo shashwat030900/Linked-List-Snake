@@ -2,13 +2,18 @@
 #include "Element/ElementData.h"
 #include "Element/Obstacle.h"
 #include "Global/ServiceLocator.h"
-#include "Level/LevelController.h"
-#include "Level/LevelView.h"
+#include "Level/LevelModel.h"
 #include "Level/LevelService.h"
+#include "LinkedList/SingleLinkedList.h"
+#include "LinkedList/SingleLinkedList.h"
 
 namespace Element
 {
-	ElementService::ElementService() = default;
+	ElementService::ElementService() : obstacle_list(Global::ServiceLocator::getInstance()->getLevelService()->getLevelModel()->getObstacleList())
+	{
+
+	}
+
 
 	ElementService::~ElementService() = default;
 
@@ -45,6 +50,7 @@ namespace Element
 
 	void ElementService::spawnObstacle(sf::Vector2i position, float cell_width, float cell_height)
 	{
+		Obstacle* obstacle = new Obstacle();
 		
 		Level::LevelView* level_view = Global::ServiceLocator::getInstance()->getLevelService()->getLevelView();
 		Obstacle* obstacle = new Obstacle(level_view);
@@ -58,10 +64,15 @@ namespace Element
 
 		for (int i = 0; i < obstacle_list.size(); i++)
 		{
-			elements_position_list.push_back(obstacle_list[i]->getObstaclePosition());
+			if (obstacle_list[i]->getObstaclePosition() == head_node->data.getNextPosition() ||
+				obstacle_list[i]->getObstaclePosition() == head_node->data.getPosition())
+			{
+				return true;
+			}
+			//elements_position_list.push_back(obstacle_list[i]->getObstaclePosition());
 		}
-
-		return elements_position_list;
+		return false;
+		//return elements_position_list;
 	}
 
 	bool ElementService::processElementsCollision(LinkedList::Node* head_node)

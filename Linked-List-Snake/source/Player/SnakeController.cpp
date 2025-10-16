@@ -209,7 +209,7 @@ namespace Player
         {
             current_snake_state = SnakeState::DEAD;
             ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
-		}
+        }
     }
 
     void SnakeController::processFoodCollision()
