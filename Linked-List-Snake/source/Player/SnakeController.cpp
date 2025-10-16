@@ -6,6 +6,8 @@
 #include "Level/LevelView.h"
 #include "Level/LevelModel.h"
 #include "Event/EventService.h"
+#include "Sound/SoundService.h"
+#include "Element/ElementService.h"
 
 
 namespace Player
@@ -13,6 +15,7 @@ namespace Player
     using namespace LinkedList;
     using namespace Global;
     using namespace Level;
+	using namespace Event;
 
 
     SnakeController::SnakeController()
@@ -90,10 +93,9 @@ namespace Player
     void SnakeController::processSnakeCollision()
     {
 
-        if(single_linked_list->processNodeCollision())
-        {
-            setSnakeState(SnakeState::DEAD);
-		}
+        processBodyCollision();
+        processElementsCollision();
+        processFoodCollision();
 
     }
     void SnakeController::handleRestart()
@@ -191,11 +193,33 @@ namespace Player
         return single_linked_list->getNodesPositionList();
     }
 
+    void SnakeController::processBodyCollision()
+    {
+        Element::ElementService* element_service = ServiceLocator::getInstance()->getElementService();
+
+        if (element_service->checkSnakeHeadCollision(single_linked_list->getHeadNode()))
+        {
+            setSnakeState(SnakeState::DEAD);
+        }
+
+    }
 
 
+    void SnakeController::processElementsCollision()
+    {
+        Element::ElementService* element_service = ServiceLocator::getInstance()->getElementService();
+
+        if (element_service->processElementsCollision(single_linked_list->getHeadNode()))
+        {
+            current_snake_state = SnakeState::DEAD;
+            ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::DEATH);
+        }
+    }
 
 
-
+    void SnakeController::processFoodCollision()
+    {
+    }
 
 
 

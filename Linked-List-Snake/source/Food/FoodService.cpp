@@ -155,4 +155,7 @@ namespace Food
 	{
 		elapsed_duration = 0.f;
 	}
+
+
+
 }

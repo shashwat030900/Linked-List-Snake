@@ -36,5 +36,6 @@ namespace LinkedList
 		bool processNodeCollision();
 		void removeAllNodes();
 		std::vector<sf::Vector2i> getNodesPositionList();
+		LinkedList::Node* getHeadNode();
 	};
 }
