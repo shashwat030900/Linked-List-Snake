@@ -66,7 +66,7 @@ namespace Food
 	{
 		printf("Food spawning started\n");
 		current_spawning_status = FoodSpawningStatus::IN_ACTIVE;
-		//destroyFood();
+		
 		reset();
 		cell_width = ServiceLocator::getInstance()->getLevelService()->getCellWidth();
 		cell_height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();

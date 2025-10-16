@@ -33,6 +33,10 @@ namespace Player
 
         InputState current_input_state;
 
+        void processBodyCollision();
+        void processElementsCollision();
+        void processFoodCollision();
+
     public:
         SnakeController();
         ~SnakeController();

@@ -6,6 +6,7 @@
 #include "Level/LevelView.h"
 #include "Level/LevelModel.h"
 #include "Event/EventService.h"
+#include "Sound/SoundService.h"
 
 
 namespace Player
@@ -13,6 +14,7 @@ namespace Player
     using namespace LinkedList;
     using namespace Global;
     using namespace Level;
+    using namespace Sound;
 
 
     SnakeController::SnakeController()
@@ -87,15 +89,7 @@ namespace Player
         single_linked_list->updateNodePosition();
 
     }
-    void SnakeController::processSnakeCollision()
-    {
-
-        if(single_linked_list->processNodeCollision())
-        {
-            setSnakeState(SnakeState::DEAD);
-		}
-
-    }
+    
     void SnakeController::handleRestart()
     {
         restart_counter += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
@@ -192,10 +186,28 @@ namespace Player
     }
 
 
+    void SnakeController::processSnakeCollision(){
+        processBodyCollision();
+        processElementsCollision();
+        processFoodCollision();
+	}
 
+    void SnakeController::processBodyCollision()
+    {
+        if (single_linked_list->processNodeCollision())
+        {
+            current_snake_state = SnakeState::DEAD;
+            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
+        }
+    }
+    
+    void SnakeController::processElementsCollision()
+    {
+    }
 
-
-
+    void SnakeController::processFoodCollision()
+    {
+    }
 
 
 
