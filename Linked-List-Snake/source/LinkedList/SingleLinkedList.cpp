@@ -359,5 +359,33 @@ namespace LinkedList
 		int mid_index = findMiddleNode();
 		removeNodeAt(mid_index);
 	}
+	
+	void SingleLinkedList::removeNodeAtTail()
+	{
+		if (head_node == nullptr) return;
+
+		linked_list_size--;
+
+		if (head_node->next == nullptr)
+		{
+			delete head_node;
+			head_node = nullptr;
+			return;
+		}
+
+		Node* cur_node = head_node;
+		Node* prev_node = nullptr;
+
+		while (cur_node->next != nullptr)
+		{
+			prev_node = cur_node;
+			cur_node = cur_node->next;
+		}
+
+		prev_node->next = nullptr;
+		delete cur_node;
+	}
+
+
 
 }
