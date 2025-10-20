@@ -51,5 +51,8 @@ namespace LinkedList
 		LinkedList::Node* getHeadNode();
 		int getLength();
 		void initializeNode(Node* new_node, Node* reference_node, Operation operation);
+
+		int linked_list_size;
+		void insertNodeAtHead();
 	};
 }
