@@ -55,6 +55,8 @@ namespace LinkedList
 		int linked_list_size;
 		void insertNodeAtHead();
 		void insertNodeAtIndex(int index);
-		void shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node);
+		void shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node); \
+		int findMiddleNode();
+		void insertNodeAtMiddle();
 	};
 }
