@@ -30,7 +30,7 @@ namespace LinkedList
 		void removeNodeAtHead();
 		void removeNodeAtIndex(int index);
 		void shiftNodesAfterRemoval(Node* cur_node);
-		
+		Node* findNodeAtIndex(int index);
 
 	public:
 
