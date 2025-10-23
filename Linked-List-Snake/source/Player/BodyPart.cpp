@@ -196,7 +196,15 @@ namespace Player
             return grid_position;
         }
     }
+    sf::Vector2i BodyPart::getPosition()
+    {
+        return grid_position;
+    }
 
+    Direction BodyPart::getPreviousDirection()
+    {
+        return previous_direction;
+    }
 
 
 

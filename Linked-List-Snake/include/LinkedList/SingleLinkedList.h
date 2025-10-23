@@ -31,6 +31,7 @@ namespace LinkedList
 		void removeNodeAtIndex(int index);
 		void shiftNodesAfterRemoval(Node* cur_node);
 		Node* findNodeAtIndex(int index);
+		void reverseNodeDirections();
 
 	public:
 
@@ -47,7 +48,7 @@ namespace LinkedList
 		void removeNodeAtTail();
 		void removeNodeAtMiddle();
 		void removeHalfNodes();
-		void reverse();
+		Player::Direction reverse();
 		void removeNodeAt(int index);
 		std::vector<sf::Vector2i> getNodesPositionList();
 		LinkedList::Node* getHeadNode();
@@ -61,5 +62,6 @@ namespace LinkedList
 		int findMiddleNode();
 		void insertNodeAtMiddle();
 		Player::Direction getReverseDirection(Player::Direction reference_direction);
+		
 	};
 }
