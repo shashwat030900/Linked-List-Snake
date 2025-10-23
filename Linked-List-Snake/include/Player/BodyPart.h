@@ -25,7 +25,8 @@ namespace Player
         sf::Vector2f getBodyPartScreenPosition();
         void syncImageToGrid();
         float getRotationAngle();
-        
+        Direction previous_direction;
+
     public:
         BodyPart();
         ~BodyPart();
@@ -51,5 +52,7 @@ namespace Player
         Direction getDirection(); 
         sf::Vector2i getPosition();
         sf::Vector2i getPrevPosition();
+       
+        Direction getPreviousDirection();
     };
 }
