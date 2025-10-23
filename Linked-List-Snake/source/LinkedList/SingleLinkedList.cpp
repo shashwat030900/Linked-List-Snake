@@ -451,6 +451,7 @@ namespace LinkedList
 		Node* cur_node = head_node;
 		Node* prev_node = nullptr;
 		Node* next_node = nullptr;
+
 		while (cur_node != nullptr)
 		{
 			next_node = cur_node->next;
@@ -462,5 +463,5 @@ namespace LinkedList
 		reverseNodeDirections();
 		return head_node->body_part.getDirection();
 	}
-
+	
 }

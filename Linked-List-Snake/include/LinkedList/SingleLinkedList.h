@@ -27,7 +27,7 @@ namespace LinkedList
 		LinkedList::Node* createNode();
 		sf::Vector2i getNewNodePosition(Node* reference_node, Operation operation);
 		
-		void removeNodeAtHead();
+		
 		void removeNodeAtIndex(int index);
 		void shiftNodesAfterRemoval(Node* cur_node);
 		Node* findNodeAtIndex(int index);
@@ -47,6 +47,7 @@ namespace LinkedList
 		void removeAllNodes();
 		void removeNodeAtTail();
 		void removeNodeAtMiddle();
+		void removeNodeAtHead();
 		void removeHalfNodes();
 		Player::Direction reverse();
 		void removeNodeAt(int index);

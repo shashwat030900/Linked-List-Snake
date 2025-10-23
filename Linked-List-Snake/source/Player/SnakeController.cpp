@@ -18,6 +18,7 @@ namespace Player
     using namespace Global;
     using namespace Level;
 	using namespace Event;
+    using namespace Food;
 
 
     SnakeController::SnakeController()
@@ -233,40 +234,48 @@ namespace Player
         }
     }
 
-    void SnakeController::OnFoodCollected(Food::FoodType food_type)
+    void SnakeController::OnFoodCollected(FoodType food_type)
     {
         switch (food_type)
         {
-        case Food::FoodType::PIZZA:
-            //Insert At Tail
+        case FoodType::PIZZA:
+            //Insert at TAIL
+            single_linked_list->insertNodeAtTail();
             break;
 
-        case Food::FoodType::BURGER:
-            //Insert At Head
+        case FoodType::BURGER:
+            //Insert at HEAD
+            single_linked_list->insertNodeAtHead();
             break;
 
-        case Food::FoodType::CHEESE:
-            //Insert in Middle
+        case FoodType::CHEESE:
+            //Insert at MIDDLE
+            single_linked_list->insertNodeAtMiddle();
             break;
 
-        case Food::FoodType::APPLE:
-            //Delete at Head
+        case FoodType::APPLE:
+            //Delete at HEAD
+            single_linked_list->removeNodeAtHead();
             break;
 
-        case Food::FoodType::MANGO:
-            //Delete at Middle
+        case FoodType::MANGO:
+            //Delete at MIDDLE
+            single_linked_list->removeNodeAtMiddle();
             break;
 
-        case Food::FoodType::ORANGE:
-            //Delete at Tail
+        case FoodType::ORANGE:
+            //Delete at TAIL
+            single_linked_list->removeNodeAtTail();
             break;
 
-        case Food::FoodType::POISION:
-            //Delete half the snake
+        case FoodType::POISION:
+            //Delete half nodes
+            single_linked_list->removeHalfNodes();
             break;
 
-        case Food::FoodType::ALCOHOL:
-            //Reverse the snake
+        case FoodType::ALCOHOL:
+            //Reverse Direction
+            current_snake_direction = single_linked_list->reverse();
             break;
         }
     }
