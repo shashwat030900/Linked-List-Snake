@@ -27,7 +27,9 @@ namespace Player
         createLinkedList();
         elapsed_duration = 0.f;
         time_complexity = TimeComplexity::NONE;
-        last_linked_list_operation = LinkedListOperations::NONE;    }
+        last_linked_list_operation = LinkedListOperations::NONE;   
+        player_score = 0;
+    }
 
     
         

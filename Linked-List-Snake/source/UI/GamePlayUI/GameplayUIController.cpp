@@ -118,6 +118,7 @@ namespace UI
             {
             case LinkedListOperations::NONE:
                 operation_value = "";
+                break;
             case LinkedListOperations::INSERT_AT_HEAD:
                 operation_value = "Insert at Head";
                 break;
