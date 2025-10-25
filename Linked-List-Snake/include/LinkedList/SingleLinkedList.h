@@ -63,6 +63,8 @@ namespace LinkedList
 		int findMiddleNode();
 		void insertNodeAtMiddle();
 		Player::Direction getReverseDirection(Player::Direction reference_direction);
+
+		
 		
 	};
 }

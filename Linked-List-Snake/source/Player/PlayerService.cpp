@@ -41,4 +41,10 @@ namespace Player
     {
         return snake_controller->getCurrentSnakePositionList();
     }
+
+    int PlayerService::getPlayerScore() const
+    {
+        return snake_controller->getPlayerScore();
+	}
+
 }

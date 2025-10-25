@@ -20,7 +20,7 @@ namespace Player
         void render();
 
         void spawnPlayer();
-
+		int getPlayerScore() const;
         std::vector<sf::Vector2i> getCurrentSnakePositionList();
     };
 }

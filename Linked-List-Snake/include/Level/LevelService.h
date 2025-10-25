@@ -28,6 +28,7 @@ namespace Level
         void initialize();
         void update();
         void render();
+		LevelNumber getCurrentLevel() const;
 
         void createLevel(LevelNumber level_to_load);
 

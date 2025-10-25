@@ -117,6 +117,7 @@ namespace Player
         elapsed_duration = 0.f;
         restart_counter = 0.f;
 		current_input_state = InputState::WAITING;
+        player_score = 0;
     }
     void SnakeController::respawnSnake()
     {
@@ -231,6 +232,7 @@ namespace Player
 
             food_service->destroyFood();
             OnFoodCollected(food_type);
+            player_score++;
         }
     }
 
@@ -280,6 +282,10 @@ namespace Player
         }
     }
 
+    int SnakeController::getPlayerScore() const
+    {
+        return player_score;
+	}
 
 
 

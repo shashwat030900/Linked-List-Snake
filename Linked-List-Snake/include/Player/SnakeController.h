@@ -33,7 +33,7 @@ namespace Player
         float restart_counter = 0.f;
 
         InputState current_input_state;
-
+        int player_score;
     public:
         SnakeController();
         ~SnakeController();
@@ -63,7 +63,7 @@ namespace Player
         SnakeState getSnakeState();
         const float restart_duration = 2.f;
         std::vector<sf::Vector2i> getCurrentSnakePositionList();
-        
+        int getPlayerScore() const;
    
       
     };

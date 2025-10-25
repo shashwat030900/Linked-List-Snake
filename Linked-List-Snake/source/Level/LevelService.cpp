@@ -80,4 +80,9 @@ namespace Level
     {
         ServiceLocator::getInstance()->getFoodService()->startFoodSpawning();
 	}   
+
+    LevelNumber LevelService::getCurrentLevel() const
+    {
+        return current_level;
+	}
 }
