@@ -464,4 +464,9 @@ namespace LinkedList
 		return head_node->body_part.getDirection();
 	}
 	
+
+	int SingleLinkedList::getLength()
+	{
+		return linked_list_size;
+	}
 }

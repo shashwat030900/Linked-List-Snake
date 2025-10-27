@@ -259,37 +259,50 @@ namespace Player
 
         case FoodType::CHEESE:
             
-            single_linked_list->insertNodeAtMiddle();
-            time_complexity = TimeComplexity::N;
-            last_linked_list_operation = LinkedListOperations::INSERT_AT_MID;
+                single_linked_list->insertNodeAtMiddle();
+                time_complexity = TimeComplexity::N;
+                last_linked_list_operation = LinkedListOperations::INSERT_AT_MID;
+            
             break;
 
         case FoodType::APPLE:
             
-            single_linked_list->removeNodeAtHead();
-            time_complexity = TimeComplexity::ONE;
-            last_linked_list_operation = LinkedListOperations::REMOVE_AT_HEAD;
+            if (single_linked_list->getLength() > 2)
+            {
+                single_linked_list->removeNodeAtHead();
+                time_complexity = TimeComplexity::ONE;
+                last_linked_list_operation = LinkedListOperations::REMOVE_AT_HEAD;
+            }
             break;
 
         case FoodType::MANGO:
             
-            single_linked_list->removeNodeAtMiddle();
-            time_complexity = TimeComplexity::N;
-            last_linked_list_operation = LinkedListOperations::REMOVE_AT_MID;
+            if (single_linked_list->getLength() > 2)
+            {
+                single_linked_list->removeNodeAtMiddle();
+                time_complexity = TimeComplexity::N;
+                last_linked_list_operation = LinkedListOperations::REMOVE_AT_MID;
+            }
             break;
 
         case FoodType::ORANGE:
             
-            single_linked_list->removeNodeAtTail();
-            time_complexity = TimeComplexity::N;
-            last_linked_list_operation = LinkedListOperations::REMOVE_AT_TAIL;
+            if (single_linked_list->getLength() > 2)
+            {
+                single_linked_list->removeNodeAtTail();
+                time_complexity = TimeComplexity::N;
+                last_linked_list_operation = LinkedListOperations::REMOVE_AT_TAIL;
+            }
             break;
 
         case FoodType::POISION:
             
-            single_linked_list->removeHalfNodes();
-            time_complexity = TimeComplexity::N;
-            last_linked_list_operation = LinkedListOperations::DELETE_HALF_LIST;
+            if (single_linked_list->getLength() > 2)
+            {
+                single_linked_list->removeHalfNodes();
+                time_complexity = TimeComplexity::N;
+                last_linked_list_operation = LinkedListOperations::DELETE_HALF_LIST;
+            }
             break;
 
         case FoodType::ALCOHOL:
