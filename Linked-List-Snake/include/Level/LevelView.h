@@ -18,7 +18,7 @@ namespace Level
 		float grid_top = 0;
 		float grid_left = 0;
 		static const int border_offset_left = 40;
-		static const int border_offset_top = 100;
+		static const int border_offset_top = 150;
 		static const int border_offset_bottom = 40;
 
 		sf::Texture obstacle_texture;

@@ -51,7 +51,7 @@ namespace Level
             {
                 if (layout[i][j] == 1)
                 {
-                    obstacle_sprite.setPosition(static_cast<float>(border_left_offset + j * cell_width), static_cast<float>(border_top_offset + i * cell_height));
+                    obstacle_sprite.setPosition(static_cast<float>(border_offset_left + j * cell_width), static_cast<float>(border_offset_top + i * cell_height));
                     obstacle_sprite.setScale(cell_width / obstacle_sprite.getTexture()->getSize().x, cell_height / obstacle_sprite.getTexture()->getSize().y);
                     game_window->draw(obstacle_sprite);
                 }
@@ -80,8 +80,7 @@ namespace Level
     void LevelView::initializeBorder()
     {
         sf::Vector2f border_size(grid_width, grid_height);
-        sf::Vector2f border_position(border_left_offset, border_top_offset);
-
+        sf::Vector2f border_position(border_offset_left, border_offset_top);
         border_rectangle->initialize(border_size, border_position, 2, sf::Color::Transparent, sf::Color::Black);
         border_rectangle->show();
     }
@@ -114,12 +113,12 @@ namespace Level
 	}
     float LevelView::getBorderLeftOffset()
     {
-        return border_left_offset;
+        return border_offset_left;
     }
 
     float LevelView::getBorderTopOffset()
     {
-        return border_top_offset;
+        return border_offset_top;
     }
     const float LevelView::border_left_offset = 50.f;
     const float LevelView::border_top_offset = 50.f;

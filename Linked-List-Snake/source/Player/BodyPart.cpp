@@ -44,8 +44,8 @@ namespace Player
     sf::Vector2f BodyPart::getBodyPartScreenPosition()
     {
         LevelView* level_view = ServiceLocator::getInstance()->getLevelService()->getLevelView();
-        float x_screen_position = level_view->border_left_offset + (grid_position.x * bodypart_width) + (bodypart_width / 2);
-        float y_screen_position = level_view->border_top_offset + (grid_position.y * bodypart_height) + (bodypart_height / 2);
+        float x_screen_position = level_view->getBorderLeftOffset() + (grid_position.x * bodypart_width) + (bodypart_width / 2);
+        float y_screen_position = level_view->getBorderTopOffset() + (grid_position.y * bodypart_height) + (bodypart_height / 2);
 
         return sf::Vector2f(x_screen_position, y_screen_position);
 
