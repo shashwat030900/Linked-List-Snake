@@ -10,6 +10,10 @@ namespace UI
 		protected:
 			sf::Texture image_texture;
 			sf::Sprite image_sprite;
+			static const int border_offset_left = 40;
+			static const int border_offset_top = 100;  
+			static const int border_offset_bottom = 40;
+
 
 		public:
 			ImageView();
