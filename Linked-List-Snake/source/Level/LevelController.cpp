@@ -1,7 +1,7 @@
 #include "Level/LevelController.h"
 #include "Level/LevelModel.h"
 #include "Level/LevelView.h"
-#include "Level/LevelNumber.h"
+#include "Level/LevelConfig.h"
 
 namespace Level
 {

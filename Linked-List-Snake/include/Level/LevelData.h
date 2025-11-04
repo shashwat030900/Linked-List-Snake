@@ -1,5 +1,5 @@
 #pragma once
-#include "LevelNumber.h"
+#include "LevelConfig.h"
 #include "Element/ElementData.h"
 #include <vector>
 

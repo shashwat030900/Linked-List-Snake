@@ -3,6 +3,7 @@
 #include "Player/Direction.h"
 #include "Food/FoodType.h"
 #include "LinkedListLib/SingleLinked/SingleLinkedList.h"
+#include "Level/LevelConfig.h"
 
 namespace Player
 {
@@ -39,9 +40,10 @@ namespace Player
     {
     private:
 
+        static Level::LinkedListType selected_linked_list_type;
         TimeComplexity time_complexity;
         LinkedListOperations last_linked_list_operation;
-        LinkedListLib::SingleLinked::SingleLinkedList* single_linked_list;
+        LinkedListLib::LinkedList* linked_list;
         SnakeState current_snake_state = SnakeState::ALIVE;
 		Direction current_snake_direction = Direction::RIGHT;
 
@@ -91,6 +93,6 @@ namespace Player
         int getPlayerScore() const;
         TimeComplexity getTimeComplexity();
         LinkedListOperations getLastOperation();
-      
+        static void setLinkedListType(Level::LinkedListType type);
     };
 }
