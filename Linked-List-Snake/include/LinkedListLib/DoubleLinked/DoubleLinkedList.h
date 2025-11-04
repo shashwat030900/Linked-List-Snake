@@ -8,7 +8,7 @@ namespace LinkedListLib
 		class DoubleLinkedList : public LinkedList
 		{
 		protected:
-			virtual Node* createNode() override;
+			virtual Node* createNode();
 
 		public:
 			DoubleLinkedList();
