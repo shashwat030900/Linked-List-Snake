@@ -90,6 +90,99 @@ namespace LinkedListLib
             return Direction::UP;
         }
     }
+    int LinkedList::getLinkedListSize()
+    {
+        return linked_list_size;
+    }
 
+    void LinkedList::render()
+    {
+        Node* current_node = head_node;
+        while (current_node != nullptr)
+        {
+            current_node->body_part.render();
+            current_node = current_node->next;
+        }
+    }
+
+    void LinkedList::updateNodePosition()
+    {
+        Node* current_node = head_node;
+        while (current_node != nullptr)
+        {
+            current_node->body_part.update();
+            current_node = current_node->next;
+        }
+    }
+
+    void LinkedList::updateNodeDirection(Direction direction_to_set)
+    {
+        if (head_node)
+        {
+            head_node->body_part.setDirection(direction_to_set);
+        }
+    }
+
+    std::vector<sf::Vector2i> LinkedList::getNodesPositionList()
+    {
+        std::vector<sf::Vector2i> node_positions;
+        Node* current_node = head_node;
+        while (current_node != nullptr)
+        {
+            node_positions.push_back(current_node->body_part.getPosition());
+            current_node = current_node->next;
+        }
+        return node_positions;
+    }
+
+    int LinkedList::findMiddleNode()
+    {
+        return linked_list_size / 2;
+    }
+
+    Node* LinkedList::findNodeAtIndex(int index)
+    {
+        Node* current_node = head_node;
+        int current_index = 0;
+        while (current_node != nullptr && current_index < index)
+        {
+            current_node = current_node->next;
+            current_index++;
+        }
+        return current_node;
+    }
+
+    void LinkedList::reverseNodeDirections()
+    {
+        Node* current_node = head_node;
+        while (current_node != nullptr)
+        {
+            Direction current_direction = current_node->body_part.getDirection();
+            current_node->body_part.setDirection(getReverseDirection(current_direction));
+            current_node = current_node->next;
+        }
+    }
+
+    bool LinkedList::processNodeCollision()
+    {
+        if (!head_node || !head_node->next)
+        {
+            return false;
+        }
+
+        Node* head = head_node;
+        Node* current_node = head_node->next;
+
+        while (current_node)
+        {
+            if (head->body_part.getPosition() == current_node->body_part.getPosition())
+            {
+                return true;
+            }
+            current_node = current_node->next;
+        }
+
+        return false;
+    }
     
 }
