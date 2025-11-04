@@ -49,13 +49,7 @@ namespace LinkedListLib
             insertNodeAtIndex(middle_node_index, createNode());
         }
 
-        void SingleLinkedList::insertNodeAtIndex(int index)
-        {
-            Node* new_node = createNode();
-            insertNodeAtIndex(index, new_node);
-        }
-
-        void SingleLinkedList::insertNodeAtIndex(int index, Node* new_node)
+        /*void SingleLinkedList::insertNodeAtIndex(int index, Node* new_node)
         {
             if (index < 0 || index > linked_list_size)
             {
@@ -80,6 +74,13 @@ namespace LinkedListLib
                 }
                 shiftNodesAfterInsertion(new_node, current_node, previous_node);
             }
+        }*/
+        
+
+        void SingleLinkedList::insertNodeAtIndex(int index, Node* new_node)
+        {
+            Node* new_node = createNode();
+            insertNodeAtIndex(index, new_node);
         }
 
         void SingleLinkedList::shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node)
@@ -240,41 +241,6 @@ namespace LinkedListLib
                 previous_direction = current_node->body_part.getDirection();
                 current_node = current_node->next;
                 Direction current_direction = getReverseDirection(current_node->body_part.getDirection());
-                current_node->body_part.setDirection(previous_direction);
-                previous_direction = current_direction;
-            }
-        }
-
-        void SingleLinkedList::updateNodePosition()
-        {
-            if (!head_node)
-            {
-                return;
-            }
-            
-            Node* current_node = head_node;
-            while (current_node->next)
-            {
-                current_node->body_part.setPosition(current_node->next->body_part.getPosition());
-                current_node = current_node->next;
-            }
-        }
-
-        void SingleLinkedList::updateNodeDirection(Direction direction_to_set)
-        {
-            if (!head_node)
-            {
-                return;
-            }
-
-            Node* current_node = head_node;
-            Direction previous_direction = current_node->body_part.getDirection();
-            current_node->body_part.setDirection(direction_to_set);
-
-            while (current_node->next)
-            {
-                current_node = current_node->next;
-                Direction current_direction = current_node->body_part.getDirection();
                 current_node->body_part.setDirection(previous_direction);
                 previous_direction = current_direction;
             }

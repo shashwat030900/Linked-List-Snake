@@ -13,7 +13,6 @@ namespace LinkedListLib
 		protected:
 			virtual Node* createNode() override;
 
-
 		public:
 			SingleLinkedList();
 			~SingleLinkedList();
@@ -21,8 +20,7 @@ namespace LinkedListLib
 			void insertNodeAtTail() override;
 			void insertNodeAtHead() override;
 			void insertNodeAtMiddle() override;
-			void insertNodeAtIndex(int index) override;  
-			void insertNodeAtIndex(int index, Node* new_node);  
+			void insertNodeAtIndex(int index, Node* new_node);
 			void shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node);
 
 			void removeNodeAtTail() override;
@@ -36,8 +34,6 @@ namespace LinkedListLib
 
 			Direction reverse() override;
 			void reverseNodeDirections();
-			void updateNodeDirection(Direction direction_to_set);
-			void updateNodePosition();
 		};
 	}
 }
