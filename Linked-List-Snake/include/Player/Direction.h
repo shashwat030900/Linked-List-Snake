@@ -7,5 +7,6 @@ namespace Player
 		DOWN,
 		LEFT,
 		RIGHT,
+		NONE,
 	};
 }

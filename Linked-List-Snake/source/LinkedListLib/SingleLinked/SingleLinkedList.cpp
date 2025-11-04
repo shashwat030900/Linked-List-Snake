@@ -46,15 +46,17 @@ namespace LinkedListLib
         void SingleLinkedList::insertNodeAtMiddle()
         {
             int middle_node_index = findMiddleNode();
-            insertNodeAtIndex(middle_node_index, createNode());
+            insertNodeAtIndex(middle_node_index);
         }
 
-        /*void SingleLinkedList::insertNodeAtIndex(int index, Node* new_node)
+         void SingleLinkedList::insertNodeAtIndex(int index)
         {
             if (index < 0 || index > linked_list_size)
             {
                 return;
             }
+
+            Node* new_node = createNode();
 
             if (index == 0)
             {
@@ -74,13 +76,6 @@ namespace LinkedListLib
                 }
                 shiftNodesAfterInsertion(new_node, current_node, previous_node);
             }
-        }*/
-        
-
-        void SingleLinkedList::insertNodeAtIndex(int index, Node* new_node)
-        {
-            Node* new_node = createNode();
-            insertNodeAtIndex(index, new_node);
         }
 
         void SingleLinkedList::shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node)
@@ -136,7 +131,28 @@ namespace LinkedListLib
 
         void SingleLinkedList::removeNodeAt(int index)
         {
-            removeNodeAtIndex(index);
+            if (index < 0 || index >= linked_list_size)
+            {
+                return;
+            }
+
+            if (index == 0)
+            {
+                removeNodeAtHead();
+            }
+            else
+            {
+                Node* current_node = head_node;
+                Node* previous_node = nullptr;
+                for (int i = 0; i < index; ++i)
+                {
+                    previous_node = current_node;
+                    current_node = current_node->next;
+                }
+                previous_node->next = current_node->next;
+                delete current_node;
+                linked_list_size--;
+            }
         }
 
         void SingleLinkedList::removeNodeAtIndex(int index)
@@ -197,7 +213,7 @@ namespace LinkedListLib
             shiftNodesAfterRemoval(cur_node->next);
         }
 
-        Direction SingleLinkedList::reverse()
+        Player::Direction SingleLinkedList::reverse()
         {
             if (!head_node || !head_node->next)
             {
@@ -205,7 +221,7 @@ namespace LinkedListLib
                 {
                     return head_node->body_part.getDirection();
                 }
-                return Direction::RIGHT;
+                return Player::Direction::RIGHT;
             }
 
             Node* previous_node = nullptr;
@@ -233,14 +249,14 @@ namespace LinkedListLib
             }
 
             Node* current_node = head_node;
-            Direction previous_direction = getReverseDirection(current_node->body_part.getDirection());
+            Player::Direction previous_direction = getReverseDirection(current_node->body_part.getDirection());
             current_node->body_part.setDirection(previous_direction);
 
             while (current_node->next)
             {
                 previous_direction = current_node->body_part.getDirection();
                 current_node = current_node->next;
-                Direction current_direction = getReverseDirection(current_node->body_part.getDirection());
+                Player::Direction current_direction = getReverseDirection(current_node->body_part.getDirection());
                 current_node->body_part.setDirection(previous_direction);
                 previous_direction = current_direction;
             }

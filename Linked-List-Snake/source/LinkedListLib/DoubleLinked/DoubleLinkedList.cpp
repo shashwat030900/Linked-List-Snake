@@ -180,17 +180,12 @@ namespace LinkedListLib
             }
         }
 
-        void DoubleLinkedList::shiftNodesAfterRemoval(Node* cur_node)
-        {
-            // This function is not applicable to a doubly linked list
-            // as removal only requires pointer manipulation, not data shifting.
-        }
-
+        
         Direction DoubleLinkedList::reverse()
         {
             if (!head_node || !head_node->next)
             {
-                return head_node ? head_node->body_part.getDirection() : Direction::NONE;
+                return head_node ? head_node->body_part.getDirection() : Direction::RIGHT;
             }
 
             Node* temp = nullptr;

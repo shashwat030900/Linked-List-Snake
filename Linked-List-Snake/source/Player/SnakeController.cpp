@@ -23,7 +23,7 @@ namespace Player
 
     SnakeController::SnakeController()
     {
-		single_linked_list = new SingleLinkedList();
+		//single_linked_list = new SingleLinkedList();
         createLinkedList();
         elapsed_duration = 0.f;
         time_complexity = TimeComplexity::NONE;
@@ -143,7 +143,7 @@ namespace Player
 	}
     void SnakeController::createLinkedList()
     {
-        single_linked_list = new SingleLinkedList();
+        //single_linked_list = new SingleLinkedList();
 	}
 
     void SnakeController::processPlayerInput()
