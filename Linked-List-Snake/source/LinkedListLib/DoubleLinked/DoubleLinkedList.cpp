@@ -122,24 +122,25 @@ namespace LinkedListLib
 
         void DoubleLinkedList::removeNodeAtTail()
         {
-            if (!head_node) return;
+            if (head_node == nullptr) return;
+            linked_list_size--;
 
-            if (!head_node->next)
+            Node* cur_node = head_node;
+
+            if (cur_node->next == nullptr)
             {
                 removeNodeAtHead();
                 return;
             }
 
-            Node* current_node = head_node;
-            while (current_node->next)
+            while (cur_node->next != nullptr)
             {
-                current_node = current_node->next;
+                cur_node = cur_node->next;
             }
 
-            Node* prev_node = static_cast<DoubleNode*>(current_node)->previous;
-            prev_node->next = nullptr;
-            delete current_node;
-            linked_list_size--;
+            Node* previous = static_cast<DoubleNode*>(cur_node)->previous;
+            previous->next = nullptr;
+            delete (cur_node);
         }
 
         void DoubleLinkedList::removeNodeAtMiddle()
