@@ -61,7 +61,8 @@ namespace LinkedListLib
 
         void DoubleLinkedList::insertNodeAtMiddle()
         {
-            insertNodeAtIndex(findMiddleNode());
+            int middle_node_index = findMiddleNode();
+            insertNodeAtIndex(middle_node_index);
         }
 
         void DoubleLinkedList::insertNodeAtIndex(int index)
@@ -75,15 +76,17 @@ namespace LinkedListLib
                 insertNodeAtHead();
                 return;
             }
-            if (index == linked_list_size)
-            {
-                insertNodeAtTail();
-                return;
-            }
+            
 
             Node* new_node = createNode();
-            Node* current_node = findNodeAtIndex(index);
-            Node* previous_node = static_cast<DoubleNode*>(current_node)->previous;
+            Node* current_node = head_node;
+            Node* previous_node = nullptr;
+
+            for (int i = 0; i < index; ++i)
+            {
+                previous_node = current_node;
+                current_node = current_node->next;
+            }
 
             shiftNodesAfterInsertion(new_node, current_node, previous_node);
         }
@@ -93,7 +96,11 @@ namespace LinkedListLib
             prev_node->next = new_node;
             static_cast<DoubleNode*>(new_node)->previous = prev_node;
             new_node->next = cur_node;
-            static_cast<DoubleNode*>(cur_node)->previous = new_node;
+
+            if (cur_node)
+            {
+                static_cast<DoubleNode*>(cur_node)->previous = new_node;
+            }
 
             initializeNode(new_node, prev_node, Operation::TAIL);
             linked_list_size++;
