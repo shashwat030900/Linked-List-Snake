@@ -37,24 +37,26 @@ namespace LinkedListLib
 
         void DoubleLinkedList::insertNodeAtTail()
         {
+            linked_list_size++;
             Node* new_node = createNode();
-            if (!head_node)
+            Node* cur_node = head_node;
+
+            if (cur_node == nullptr)
             {
                 head_node = new_node;
-                initializeNode(new_node, nullptr, Operation::HEAD);
+                static_cast<DoubleNode*>(new_node)->previous = nullptr;
+                initializeNode(new_node, nullptr, Operation::TAIL);
+                return;
             }
-            else
+
+            while (cur_node->next != nullptr)
             {
-                Node* current_node = head_node;
-                while (current_node->next)
-                {
-                    current_node = current_node->next;
-                }
-                current_node->next = new_node;
-                static_cast<DoubleNode*>(new_node)->previous = current_node;
-                initializeNode(new_node, current_node, Operation::TAIL);
+                cur_node = cur_node->next;
             }
-            linked_list_size++;
+
+            cur_node->next = new_node;
+            static_cast<DoubleNode*>(new_node)->previous = cur_node;
+            initializeNode(new_node, cur_node, Operation::TAIL);
         }
 
         void DoubleLinkedList::insertNodeAtMiddle()
