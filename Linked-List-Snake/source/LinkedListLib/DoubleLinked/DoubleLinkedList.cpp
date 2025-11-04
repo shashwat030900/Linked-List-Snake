@@ -106,20 +106,18 @@ namespace LinkedListLib
             linked_list_size++;
         }
 
-        void DoubleLinkedList::removeNodeAtHead()
-        {
-            if (!head_node) return;
+        void DoubleLinkedList::removeNodeAtHead() {
+            linked_list_size--;
 
-            Node* node_to_delete = head_node;
+            Node* cur_node = head_node;
             head_node = head_node->next;
 
-            if (head_node)
-            {
+            if (head_node != nullptr) {
                 static_cast<DoubleNode*>(head_node)->previous = nullptr;
             }
 
-            delete node_to_delete;
-            linked_list_size--;
+            cur_node->next = nullptr;
+            delete cur_node;
         }
 
         void DoubleLinkedList::removeNodeAtTail()
