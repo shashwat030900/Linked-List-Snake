@@ -145,7 +145,8 @@ namespace LinkedListLib
 
         void DoubleLinkedList::removeNodeAtMiddle()
         {
-            removeNodeAtIndex(findMiddleNode());
+            int middle_node_index = findMiddleNode();
+            removeNodeAtIndex(middle_node_index);
         }
 
         void DoubleLinkedList::removeNodeAt(int index)
@@ -155,27 +156,28 @@ namespace LinkedListLib
 
         void DoubleLinkedList::removeNodeAtIndex(int index)
         {
-            if (index < 0 || index >= linked_list_size) return;
+            if (index < 0 || index >= linked_list_size)
+            {
+                return;
+            }
+
             if (index == 0)
             {
                 removeNodeAtHead();
-                return;
             }
-            if (index == linked_list_size - 1)
+            else
             {
-                removeNodeAtTail();
-                return;
+                Node* current_node = head_node;
+                Node* previous_node = nullptr;
+                for (int i = 0; i < index; ++i)
+                {
+                    previous_node = current_node;
+                    current_node = current_node->next;
+                }
+                previous_node->next = current_node->next;
+                delete current_node;
+                linked_list_size--;
             }
-
-            Node* node_to_delete = findNodeAtIndex(index);
-            Node* prev_node = static_cast<DoubleNode*>(node_to_delete)->previous;
-            Node* next_node = node_to_delete->next;
-
-            prev_node->next = next_node;
-            static_cast<DoubleNode*>(next_node)->previous = prev_node;
-
-            delete node_to_delete;
-            linked_list_size--;
         }
 
         void DoubleLinkedList::removeAllNodes()
@@ -222,5 +224,16 @@ namespace LinkedListLib
             reverseNodeDirections();
             return head_node->body_part.getDirection();
         }
+
+        void DoubleLinkedList::shiftNodesAfterRemoval(Node* cur_node)
+        {
+            if (!cur_node || !cur_node->next)
+            {
+                return;
+            }
+            cur_node->body_part.setPosition(cur_node->next->body_part.getPosition());
+            shiftNodesAfterRemoval(cur_node->next);
+        }
+
     }
 }
