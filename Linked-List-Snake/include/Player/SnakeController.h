@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/System/Vector2.hpp>
-#include "LinkedList/SingleLinkedList.h"
 #include "Player/Direction.h"
 #include "Food/FoodType.h"
+#include "LinkedListLib/SingleLinked/SingleLinkedList.h"
 
 namespace Player
 {
@@ -41,7 +41,7 @@ namespace Player
 
         TimeComplexity time_complexity;
         LinkedListOperations last_linked_list_operation;
-        LinkedList::SingleLinkedList* single_linked_list; 
+        LinkedListLib::SingleLinked::SingleLinkedList* single_linked_list;
         SnakeState current_snake_state = SnakeState::ALIVE;
 		Direction current_snake_direction = Direction::RIGHT;
 

@@ -5,7 +5,7 @@
 #include "Level/LevelController.h"
 #include "Level/LevelView.h"
 #include "Level/LevelService.h"
-#include "LinkedList/SingleLinkedList.h"
+#include "LinkedListLib/SingleLinked/SingleLinkedList.h"
 
 namespace Element
 {
@@ -61,7 +61,7 @@ namespace Element
         return elements_position_list;
     }
 
-    bool ElementService::processElementsCollision(LinkedList::Node* head_node)
+    bool ElementService::processElementsCollision(LinkedListLib::Node* head_node)
     {
         for (size_t i = 0; i < obstacle_list.size(); i++)
         {
@@ -74,13 +74,13 @@ namespace Element
         return false;
     }
 
-    bool ElementService::checkSnakeHeadCollision(LinkedList::Node* head_node)
+    bool ElementService::checkSnakeHeadCollision(LinkedListLib::Node* head_node)
     {
         if (head_node == nullptr) return false;
 
         sf::Vector2i predicted_position = head_node->body_part.getNextPosition();
 
-        LinkedList::Node* cur_node = head_node->next;
+        LinkedListLib::Node* cur_node = head_node->next;
         while (cur_node != nullptr) {
             if (cur_node->body_part.getPosition() == predicted_position) {
                 return true;

@@ -1,7 +1,7 @@
 #include "Player/SnakeController.h"
 #include "Global/ServiceLocator.h"
 #include "Level/LevelService.h"
-#include "LinkedList/SingleLinkedList.h"
+#include "LinkedListLib/SingleLinked/SingleLinkedList.h"
 #include "Player/Direction.h"
 #include "Level/LevelView.h"
 #include "Level/LevelModel.h"
@@ -14,7 +14,7 @@
 
 namespace Player
 {
-    using namespace LinkedList;
+    using namespace LinkedListLib::SingleLinked;
     using namespace Global;
     using namespace Level;
 	using namespace Event;
@@ -267,7 +267,7 @@ namespace Player
 
         case FoodType::APPLE:
             
-            if (single_linked_list->getLength() > 2)
+            if (single_linked_list->getLinkedListSize() > 2)
             {
                 single_linked_list->removeNodeAtHead();
                 time_complexity = TimeComplexity::ONE;
@@ -277,7 +277,7 @@ namespace Player
 
         case FoodType::MANGO:
             
-            if (single_linked_list->getLength() > 2)
+            if (single_linked_list->getLinkedListSize() > 2)
             {
                 single_linked_list->removeNodeAtMiddle();
                 time_complexity = TimeComplexity::N;
@@ -287,7 +287,7 @@ namespace Player
 
         case FoodType::ORANGE:
             
-            if (single_linked_list->getLength() > 2)
+            if (single_linked_list->getLinkedListSize() > 2)
             {
                 single_linked_list->removeNodeAtTail();
                 time_complexity = TimeComplexity::N;
@@ -297,7 +297,7 @@ namespace Player
 
         case FoodType::POISION:
             
-            if (single_linked_list->getLength() > 2)
+            if (single_linked_list->getLinkedListSize() > 2)
             {
                 single_linked_list->removeHalfNodes();
                 time_complexity = TimeComplexity::N;
