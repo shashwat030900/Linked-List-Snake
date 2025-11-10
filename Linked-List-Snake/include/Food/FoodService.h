@@ -55,7 +55,7 @@ namespace Food
 		void initialize();
 		void update();
 		void render();
-
+		
 		void startFoodSpawning();
 		void stopFoodSpawning();
 		bool processFoodCollision(LinkedListLib::Node* head_node, FoodType& out_food_type);

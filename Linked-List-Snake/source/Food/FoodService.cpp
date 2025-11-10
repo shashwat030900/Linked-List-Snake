@@ -141,15 +141,7 @@ namespace Food
 		elapsed_duration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 	}
 
-	void FoodService::handleFoodSpawning()
-	{
-		if (elapsed_duration >= spawn_duration)
-		{
-			destroyFood();
-			reset();
-			spawnFood();
-		}
-	}
+	
 
 	void FoodService::reset()
 	{
@@ -165,6 +157,17 @@ namespace Food
 		}
 
 		return false;
+	}
+	void FoodService::handleFoodSpawning()
+	{
+		if (ServiceLocator::getInstance()->getPlayerService()->isPlayerDead()) return;
+
+		if (elapsed_duration >= spawn_duration)
+		{
+			destroyFood();
+			reset();
+			spawnFood();
+		}
 	}
 
 }

@@ -58,7 +58,7 @@ namespace Player
         void delayedUpdate();
         float elapsed_duration = 2.f;
         float restart_counter = 0.f;
-
+        
         InputState current_input_state;
         int player_score;
     public:
@@ -67,7 +67,7 @@ namespace Player
         void createLinkedList(Level::LinkedListType level_type);
 		const int initial_snake_length = 8; 
         void initializeLinkedList();
-
+        bool isSnakeDead();
         void initialize();
         void update();
         void render();
