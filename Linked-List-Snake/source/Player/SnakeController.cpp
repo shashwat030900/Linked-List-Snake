@@ -89,11 +89,17 @@ namespace Player
     {
 		linked_list->updateNodeDirection(current_snake_direction);
     }
-    void SnakeController::moveSnake()
-    {
-        linked_list->updateNodePosition();
-
-    }
+    void SnakeController::moveSnake() {
+    printf("Moving snake at position before: (%d, %d)\n", 
+           linked_list->getHeadNode()->body_part.getPosition().x,
+           linked_list->getHeadNode()->body_part.getPosition().y);
+           
+    linked_list->updateNodePosition();
+    
+    printf("Moving snake at position after: (%d, %d)\n", 
+           linked_list->getHeadNode()->body_part.getPosition().x,
+           linked_list->getHeadNode()->body_part.getPosition().y);
+}
     void SnakeController::processSnakeCollision()
     {
 
@@ -197,11 +203,9 @@ namespace Player
             if (current_snake_state == SnakeState::ALIVE)
             moveSnake();
 
-			//moveSnake();
-			current_input_state = InputState::WAITING;
-        
-        } 
-    }
+        current_input_state = InputState::WAITING;
+    } 
+}
 
     std::vector<sf::Vector2i> SnakeController::getCurrentSnakePositionList()
     {
