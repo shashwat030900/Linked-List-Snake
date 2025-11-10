@@ -57,9 +57,9 @@ namespace Player
             case SnakeState::ALIVE:
                 processPlayerInput();
 				delayedUpdate();
-              /*  updateSnakeDirection();
+                updateSnakeDirection();
                 processSnakeCollision();
-                moveSnake();*/
+                moveSnake();
                 break;
 
             case SnakeState::DEAD:
@@ -353,7 +353,7 @@ namespace Player
         reset();
         linked_list->initialize(width, height, default_position, default_direction);
 
-
+        spawnSnake();
 
     }
 

@@ -120,7 +120,6 @@ namespace Level
     {
         return border_offset_top;
     }
-    const float LevelView::border_left_offset = 50.f;
-    const float LevelView::border_top_offset = 50.f;
+    
     
 }

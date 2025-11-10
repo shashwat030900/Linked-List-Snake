@@ -47,7 +47,7 @@ namespace Player
         SnakeState current_snake_state = SnakeState::ALIVE;
 		Direction current_snake_direction = Direction::RIGHT;
 
-        sf::Vector2i default_position = { 48, 27 };
+        sf::Vector2i default_position = { 20, 10 };
        
         Player::Direction default_direction = Direction::RIGHT;
 
