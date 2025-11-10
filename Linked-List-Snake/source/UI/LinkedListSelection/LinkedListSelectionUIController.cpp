@@ -59,23 +59,24 @@ namespace UI
 
         void LinkedListSelectionUIController::registerButtonCallbacks()
         {
-            single_linked_list_button->registerCallbackFuntion(std::bind(&LinkedListSelectionUIController::singleLinkedListCallback, this));
-            double_linked_list_button->registerCallbackFuntion(std::bind(&LinkedListSelectionUIController::doubleLinkedListCallback, this));
+            // Correct the function names to match their definitions
+            single_linked_list_button->registerCallbackFuntion(std::bind(&LinkedListSelectionUIController::singleLinkedListButtonCallback, this));
+            double_linked_list_button->registerCallbackFuntion(std::bind(&LinkedListSelectionUIController::doubleLinkedListButtonCallback, this));
             menu_button->registerCallbackFuntion(std::bind(&LinkedListSelectionUIController::menuButtonCallback, this));
         }
 
-        void LinkedListSelectionUIController::singleLinkedListCallback()
+        void LinkedListSelectionUIController::singleLinkedListButtonCallback()
         {
             ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
-            SnakeController::setLinkedListType(Level::LinkedListType::SINGLE_LINKED_LIST);
             GameService::setGameState(GameState::GAMEPLAY);
+            ServiceLocator::getInstance()->getLevelService()->createLevel(LinkedListType::SINGLE_LINKED_LIST);
         }
 
-        void LinkedListSelectionUIController::doubleLinkedListCallback()
+        void LinkedListSelectionUIController::doubleLinkedListButtonCallback()
         {
             ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
-            SnakeController::setLinkedListType(Level::LinkedListType::DOUBLE_LINKED_LIST);
             GameService::setGameState(GameState::GAMEPLAY);
+            ServiceLocator::getInstance()->getLevelService()->createLevel(LinkedListType::DOUBLE_LINKED_LIST);
         }
 
         void LinkedListSelectionUIController::menuButtonCallback()

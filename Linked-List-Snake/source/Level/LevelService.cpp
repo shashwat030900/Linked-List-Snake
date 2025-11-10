@@ -4,6 +4,7 @@
 #include "Player/PlayerService.h"
 #include "Food/FoodService.h"
 #include "Element/ElementData.h" 
+#include "Level/LevelConfig.h"
 
 namespace Level
 {
@@ -41,16 +42,16 @@ namespace Level
 
     void LevelService::createLevel(LevelNumber level_to_load)
     {
-        current_level = level_to_load;
-        //level_controller->loadLevel(level_to_load);
-        spawnPlayer();
+        LinkedListType list_type_for_this_level = LinkedListType::SINGLE_LINKED_LIST;
+        //current_linked_list_type = linked_list_type;
+        spawnPlayer(list_type_for_this_level);
 		spawnFood();
-		spawnLevelElements(level_to_load);
+		spawnLevelElements(current_level);
     }
 
-    void LevelService::spawnPlayer()
+    void LevelService::spawnPlayer(LinkedListType type_to_use)
     {
-        ServiceLocator::getInstance()->getPlayerService()->spawnPlayer();
+        ServiceLocator::getInstance()->getPlayerService()->spawnPlayer(type_to_use);
     }
 
     
@@ -85,4 +86,20 @@ namespace Level
     {
         return current_level;
 	}
+
+    void LevelService::setCurrentLevelNumber(LevelNumber level_to_load)
+    {
+        current_level = level_to_load;
+    }
+
+   
+
+    void LevelService::createLevel(LinkedListType linked_list_type)
+    {
+        current_linked_list_type = linked_list_type;
+        spawnLevelElements(current_level);
+        spawnFood();
+        spawnPlayer(linked_list_type); 
+    }
+
 }

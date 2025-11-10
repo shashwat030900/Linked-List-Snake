@@ -1,5 +1,6 @@
 #include "Player/PlayerService.h"
 #include "Player/SnakeController.h"
+#include "Level/LevelConfig.h"
 
 namespace Player
 {
@@ -33,14 +34,11 @@ namespace Player
         snake_controller->render();
     }
 
-    void PlayerService::spawnPlayer()
-    {
-        snake_controller->spawnSnake();
-    }
-    std::vector<sf::Vector2i> PlayerService::getCurrentSnakePositionList()
-    {
-        return snake_controller->getCurrentSnakePositionList();
-    }
+    void PlayerService::spawnPlayer(Level::LinkedListType level_type)
+{
+	snake_controller->createLinkedList(level_type);
+	snake_controller->spawnSnake();
+}
 
     int PlayerService::getPlayerScore() const
     {
@@ -57,5 +55,8 @@ namespace Player
         return snake_controller->getLastOperation();
     }
 
-
+    std::vector<sf::Vector2i> PlayerService::getCurrentSnakePositionList()
+    {
+        return snake_controller->getCurrentSnakePositionList();
+    }
 }

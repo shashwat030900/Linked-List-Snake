@@ -18,12 +18,13 @@ namespace Player
         void initialize();
         void update();
         void render();
-
-        void spawnPlayer();
+        
+        void spawnPlayer(Level::LinkedListType level_type);
 		int getPlayerScore() const;
         std::vector<sf::Vector2i> getCurrentSnakePositionList();
         TimeComplexity getTimeComplexity();
         LinkedListOperations getLastOperation();
+
     };
 }
 

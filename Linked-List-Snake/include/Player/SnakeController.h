@@ -52,7 +52,7 @@ namespace Player
         Player::Direction default_direction = Direction::RIGHT;
 
         void destroy();
-        void createLinkedList();
+        
         void processPlayerInput();
         const float movement_frame_duration = 0.1f;
         void delayedUpdate();
@@ -64,8 +64,9 @@ namespace Player
     public:
         SnakeController();
         ~SnakeController();
-
+        void createLinkedList(Level::LinkedListType level_type);
 		const int initial_snake_length = 8; 
+        void initializeLinkedList();
 
         void initialize();
         void update();

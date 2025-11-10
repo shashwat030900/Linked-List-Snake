@@ -28,7 +28,7 @@ namespace Player
     SnakeController::SnakeController()
     {
 		
-        createLinkedList();
+        
         elapsed_duration = 0.f;
         time_complexity = TimeComplexity::NONE;
         last_linked_list_operation = LinkedListOperations::NONE;   
@@ -45,14 +45,8 @@ namespace Player
         
     void SnakeController::initialize()
     {
-            float width = ServiceLocator::getInstance()->getLevelService()->getCellWidth();
-            float height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
-
-            int columns = LevelModel::number_of_columns;
-            int rows = LevelModel::number_of_rows;
-            default_position = { columns / 2, rows / 2 };
-
-            linked_list->initialize(width, height, default_position, default_direction);
+            
+            
     }
 
         
@@ -145,18 +139,20 @@ namespace Player
 		delete (linked_list);
 
 	}
-    void SnakeController::createLinkedList()
+    void SnakeController::createLinkedList(LinkedListType level_type)
     {
-        switch (selected_linked_list_type)
+        switch (level_type)
         {
         case LinkedListType::SINGLE_LINKED_LIST:
-            linked_list = new SingleLinked::SingleLinkedList();
+            linked_list = new LinkedListLib::SingleLinked::SingleLinkedList();
             break;
         case LinkedListType::DOUBLE_LINKED_LIST:
-            linked_list = new DoubleLinked::DoubleLinkedList();
+            linked_list = new LinkedListLib::DoubleLinked::DoubleLinkedList();
             break;
         }
-	}
+
+        initializeLinkedList();
+    }
 
     void SnakeController::processPlayerInput()
     {
@@ -344,5 +340,19 @@ namespace Player
     {
         selected_linked_list_type = type;
     }
+
+    void SnakeController::initializeLinkedList() {
+
+        float width = ServiceLocator::getInstance()->getLevelService()->getCellWidth();
+        float height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
+
+        reset();
+        linked_list->initialize(width, height, default_position, default_direction);
+
+
+
+    }
+
+    
 
 }

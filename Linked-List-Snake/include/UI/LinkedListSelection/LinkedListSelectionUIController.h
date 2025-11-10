@@ -33,8 +33,8 @@ namespace UI
             void destroy();
 
             // Callback methods:
-            void singleLinkedListCallback();
-            void doubleLinkedListCallback();
+            void singleLinkedListButtonCallback();
+            void doubleLinkedListButtonCallback();
             void menuButtonCallback();
 
         public:
