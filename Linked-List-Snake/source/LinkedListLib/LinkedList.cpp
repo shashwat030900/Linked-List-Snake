@@ -97,11 +97,19 @@ namespace LinkedListLib
 
     void LinkedList::render()
     {
+       
+        std::vector<Node*> nodes_to_render;
         Node* current_node = head_node;
         while (current_node != nullptr)
         {
-            current_node->body_part.render();
+            nodes_to_render.push_back(current_node);
             current_node = current_node->next;
+        }
+
+        
+        for (int i = nodes_to_render.size() - 1; i >= 0; --i)
+        {
+            nodes_to_render[i]->body_part.render();
         }
     }
 
@@ -110,7 +118,7 @@ namespace LinkedListLib
         Node* current_node = head_node;
         while (current_node != nullptr)
         {
-            current_node->body_part.update();
+            current_node->body_part.updatePosition();
             current_node = current_node->next;
         }
     }

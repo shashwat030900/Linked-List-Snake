@@ -52,14 +52,23 @@ namespace Player
         
     void SnakeController::update()
     {
+        processPlayerInput();
             switch (current_snake_state)
             {
             case SnakeState::ALIVE:
-                processPlayerInput();
-				delayedUpdate();
-                updateSnakeDirection();
-                processSnakeCollision();
-                moveSnake();
+                elapsed_duration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+                if (elapsed_duration >= movement_frame_duration) {
+
+                    elapsed_duration = 0.0f;
+                    updateSnakeDirection();
+                    processSnakeCollision();
+
+                    if (current_snake_state == SnakeState::ALIVE)
+                        moveSnake();
+
+                    current_input_state = InputState::WAITING;
+                }
                 break;
 
             case SnakeState::DEAD:
@@ -76,13 +85,44 @@ namespace Player
     }
     void SnakeController::spawnSnake()
     {
+        
         for (int i = 0; i < initial_snake_length; i++) {
-        
-			linked_list->insertNodeAtTail();
-        
+            linked_list->insertNodeAtTail();
         }
 
-	}
+       
+        LinkedListLib::Node* current_node = linked_list->getHeadNode();
+        int position_offset = 0;
+
+        while (current_node)
+        {
+            sf::Vector2i body_position = default_position;
+
+            
+            switch (default_direction)
+            {
+            case Direction::RIGHT:
+                body_position.x -= position_offset;
+                break;
+            case Direction::LEFT:
+                body_position.x += position_offset;
+                break;
+            case Direction::UP:
+                body_position.y += position_offset;
+                break;
+            case Direction::DOWN:
+                body_position.y -= position_offset;
+                break;
+            }
+
+            current_node->body_part.setPosition(body_position);
+            position_offset++;
+            current_node = current_node->next;
+        }
+
+        
+        linked_list->updateNodePosition();
+    }
 
     
     void SnakeController::updateSnakeDirection()
@@ -90,16 +130,30 @@ namespace Player
 		linked_list->updateNodeDirection(current_snake_direction);
     }
     void SnakeController::moveSnake() {
-    printf("Moving snake at position before: (%d, %d)\n", 
-           linked_list->getHeadNode()->body_part.getPosition().x,
-           linked_list->getHeadNode()->body_part.getPosition().y);
-           
-    linked_list->updateNodePosition();
-    
-    printf("Moving snake at position after: (%d, %d)\n", 
-           linked_list->getHeadNode()->body_part.getPosition().x,
-           linked_list->getHeadNode()->body_part.getPosition().y);
-}
+        
+        sf::Vector2i next_head_position = linked_list->getHeadNode()->body_part.getNextPosition();
+
+        
+        sf::Vector2i head_current_position = linked_list->getHeadNode()->body_part.getPosition();
+
+        
+        linked_list->getHeadNode()->body_part.setPosition(next_head_position);
+
+        
+        LinkedListLib::Node* current_node = linked_list->getHeadNode()->next;
+        sf::Vector2i previous_position = head_current_position;
+
+        while (current_node)
+        {
+            sf::Vector2i temp = current_node->body_part.getPosition();
+            current_node->body_part.setPosition(previous_position);
+            previous_position = temp;
+            current_node = current_node->next;
+        }
+
+        // Update visuals
+        linked_list->updateNodePosition();
+    }
     void SnakeController::processSnakeCollision()
     {
 

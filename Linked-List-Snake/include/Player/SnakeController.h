@@ -65,7 +65,7 @@ namespace Player
         SnakeController();
         ~SnakeController();
         void createLinkedList(Level::LinkedListType level_type);
-		const int initial_snake_length = 8; 
+		const int initial_snake_length = 4; 
         void initializeLinkedList();
         bool isSnakeDead();
         void initialize();

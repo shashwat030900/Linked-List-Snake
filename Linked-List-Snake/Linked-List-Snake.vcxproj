@@ -133,6 +133,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cpp source\LinkedListLib\LinkedList.cpp" />
+    <ClCompile Include="cpp source\Player\SnakeController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="source\Element\ElementData.cpp" />
     <ClCompile Include="source\Element\ElementService.cpp" />

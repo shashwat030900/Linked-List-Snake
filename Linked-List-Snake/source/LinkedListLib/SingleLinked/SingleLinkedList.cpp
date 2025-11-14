@@ -29,6 +29,7 @@ namespace LinkedListLib
             {
                 head_node = new_node;
                 initializeNode(new_node, nullptr, Operation::HEAD);
+                return;
             }
             else
             {
