@@ -1,0 +1,91 @@
+#include "Food/FoodItem.h"
+#include "Global/Config.h"
+#include "Level/LevelView.h"
+
+namespace Food {
+	using namespace Global;
+
+	FoodItem::FoodItem() : food_image(nullptr) // initialize pointer
+	{
+	}
+
+	FoodItem::~FoodItem() {
+		if (food_image) {
+			delete food_image;
+			food_image = nullptr;
+		}
+	}
+
+	sf::String FoodItem::getFoodTexturePath()
+	{
+		switch (food_type)
+		{
+		case Food::FoodType::APPLE:
+			return Config::apple_texture_path;
+
+		case Food::FoodType::MANGO:
+			return Config::mango_texture_path;
+
+		case Food::FoodType::ORANGE:
+			return Config::orange_texture_path;
+
+		case Food::FoodType::PIZZA:
+			return Config::pizza_texture_path;
+
+		case Food::FoodType::BURGER:
+			return Config::burger_texture_path;
+
+		case Food::FoodType::CHEESE:
+			return Config::cheese_texture_path;
+
+		case Food::FoodType::POISION:
+			return Config::poision_texture_path;
+
+		case Food::FoodType::ALCOHOL:
+			return Config::alcohol_texture_path;
+
+		default:
+			return Config::apple_texture_path;
+		}
+	}
+
+	void FoodItem::update() {
+		
+	}
+
+	void FoodItem::render() {
+		
+		if (food_image) {
+			food_image->render(); 
+		}
+	}
+
+	sf::Vector2f FoodItem::getFoodImagePosition()
+	{
+		float screen_position_x = Level::LevelView::getBorderLeftOffset() + (cell_width * grid_position.x);
+		float screen_position_y = Level::LevelView::getBorderTopOffset() + (cell_height * grid_position.y);
+		return sf::Vector2f(screen_position_x, screen_position_y);
+	}
+
+	void FoodItem::initialize(sf::Vector2i gridPos, float cellW, float cellH, FoodType type)
+	{
+		grid_position = gridPos;
+		cell_width    = cellW;
+		cell_height   = cellH;
+		food_type     = type;
+		initializeFoodImage();
+	}
+
+	void FoodItem::initializeFoodImage()
+	{
+		if (!food_image) {
+			food_image = new UI::UIElement::ImageView();
+		}
+		sf::Vector2f screen_position = getFoodImagePosition();
+		sf::String food_texture_path = getFoodTexturePath();
+
+		food_image->initialize(food_texture_path, cell_width, cell_height, screen_position);
+		food_image->show();
+	}
+
+}
